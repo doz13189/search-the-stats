@@ -21,9 +21,15 @@ export default defineComponent({
 
     getPlayers(666609)
       .then(response => {
-        ruiFirstName.value = response.first_name
-        ruiLastName.value = response.last_name
-        teamFullName.value = response.team.full_name
+
+        if (response.status === 200) {
+          ruiFirstName.value = response.data.first_name
+          ruiLastName.value = response.data.last_name
+          teamFullName.value = response.data.team.full_name
+        } else {
+          console.log('error')
+        }
+        
       })
 
     return {
