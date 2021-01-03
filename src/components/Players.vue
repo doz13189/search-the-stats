@@ -1,41 +1,30 @@
 <template>
   <div>
     <p>{{ msg }}</p>
-    <p>team : {{ teamFullName }}</p>
-    <p>player : {{ ruiFirstName }} {{ ruiLastName }}</p>
+    
+    <!-- <p>team : {{ player.result.value.team.full_name }}</p> -->
+    <p>player : {{ player.result.value.first_name }} {{ player.result.value.last_name }}</p>
+
+    <p>loading : {{ player.loading.value }}</p>
+    <p>error : {{ player.error.value }}</p>
+
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { getPlayers } from "../api/api"
+import { defineComponent, ref } from 'vue';
+import { getPlayers } from '../api/api'
+import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
   props: {
     msg: String
   },
   setup() {
-    const ruiFirstName = ref<string>('')
-    const ruiLastName = ref<string>('')
-    const teamFullName = ref<string>('')
-
-    getPlayers(666609)
-      .then(response => {
-
-        if (response.status === 200) {
-          ruiFirstName.value = response.data.first_name
-          ruiLastName.value = response.data.last_name
-          teamFullName.value = response.data.team.full_name
-        } else {
-          console.log('error')
-        }
-        
-      })
-
+    const player = useRequest(getPlayers)
+    player.createRequest(666609)
     return {
-      ruiFirstName,
-      ruiLastName,
-      teamFullName
+      player
     }
   }
 });

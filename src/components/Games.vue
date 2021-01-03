@@ -1,24 +1,26 @@
 <template>
   <div>
-    <p>min : {{ min }}</p>
+
+    <p>min : {{ stats.result.value.data }}</p>
+    <p>loading : {{ stats.loading.value }}</p>
+    <p>error : {{ stats.error.value }}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { getStats } from "../api/api"
+import { defineComponent, ref } from 'vue';
+import { getStats } from '../api/api'
+import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
   setup() {
-    const min = ref<number>(0)
-    getStats({
+    const stats = useRequest(getStats)
+    stats.createRequest({
         'player_ids[]': 666609
-      }).then(response => {
-        min.value = response.data[0].min
-      })
-    
+    })
+
     return {
-      min
+      stats
     }
   }
 });
