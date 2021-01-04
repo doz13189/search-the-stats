@@ -1,5 +1,4 @@
 import { shallowMount } from "@vue/test-utils";
-// import axios from 'axios';
 
 import Players from "@/components/Players.vue";
 

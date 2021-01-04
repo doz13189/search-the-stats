@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <p>min : {{ stats.result.value.data }}</p>
     <p>loading : {{ stats.loading.value }}</p>
     <p>error : {{ stats.error.value }}</p>
@@ -8,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import { getStats } from '../api/api'
 import { useRequest } from '../utils/useRequest'
 
