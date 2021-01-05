@@ -3,7 +3,7 @@
     <p>{{ msg }}</p>
 
     <!-- <div v-if="Object.keys(player.result).length"> -->
-      <p>team : {{ playerObj.team.full_name }}</p>
+      <p>team : {{ player.result.value.team?.full_name }}</p>
       <p>player : {{ player.result.value.first_name }} {{ player.result.value.last_name }}</p>
     <!-- </div> -->
 
@@ -23,25 +23,7 @@ export default defineComponent({
     msg: String
   },
   setup() {
-    // type playerType = {
-    //   id: number;
-    //   first_name: string;
-    //   height_feet: number;
-    //   height_inches: number;
-    //   last_name: string;
-    //   position: string;
-    //   team: {
-    //     id: number;
-    //     abbreviation: string;
-    //     city: string;
-    //     conference: string;
-    //     division: string;
-    //     full_name: string;
-    //     name: string
-    //   };
-    //   weight_pounds: null;
-    // }
-    // const playerObj = ref<playerType>()
+    const playerObj = ref<object>()
 
     const player = useRequest(getPlayers)
     player.createRequest(666609)
