@@ -1,4 +1,5 @@
 <template>
+  
   <Players msg="Welcome to Your Vue.js + TypeScript App" />
   <Games/>
 </template>

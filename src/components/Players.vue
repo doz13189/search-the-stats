@@ -2,10 +2,8 @@
   <div>
     <p>{{ msg }}</p>
 
-    <!-- <div v-if="Object.keys(player.result).length"> -->
-      <p>team : {{ player.result.value.team?.full_name }}</p>
-      <p>player : {{ player.result.value.first_name }} {{ player.result.value.last_name }}</p>
-    <!-- </div> -->
+    <p>team : {{ player.result.value.team?.full_name }}</p>
+    <p>player : {{ player.result.value.first_name }} {{ player.result.value.last_name }}</p>
 
     <p>loading : {{ player.loading.value }}</p>
     <p>error : {{ player.error.value }}</p>

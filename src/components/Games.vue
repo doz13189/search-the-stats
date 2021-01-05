@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>min : {{ stats.result.value?.data[0] }}</p>
+    <p>min : {{ stats.result.value.data?.[0] }}</p>
     <p>loading : {{ stats.loading.value }}</p>
     <p>error : {{ stats.error.value }}</p>
   </div>
