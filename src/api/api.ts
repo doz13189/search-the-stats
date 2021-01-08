@@ -10,6 +10,14 @@ const createParam = (params: object): string => {
   return param
 }
 
+export const searchPlayers = (name: string) => {
+  return request(
+    '/players',
+    `?search=${name}`
+  )
+}
+
+
 export const getPlayers = (id: number) => {
   return request(
     '/players',

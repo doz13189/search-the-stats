@@ -1,18 +1,20 @@
 <template>
-  
-  <Players msg="Welcome to Your Vue.js + TypeScript App" />
-  <Games/>
+  <Search/>
+  <!-- <Players/> -->
+  <!-- <Games/> -->
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Players from "./components/Players.vue";
-import Games from "./components/Games.vue";
+import Search from "./components/Search.vue";
+// import Players from "./components/Players.vue";
+// import Games from "./components/Games.vue";
 
 export default defineComponent({
   components: {
-    Players,
-    Games
+    Search,
+    // Players,
+    // Games
   }
 });
 </script>

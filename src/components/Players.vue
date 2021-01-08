@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ msg }}</p>
+    <!-- <p>{{ msg }}</p> -->
 
     <p>team : {{ player.result.value.team?.full_name }}</p>
     <p>player : {{ player.result.value.first_name }} {{ player.result.value.last_name }}</p>
@@ -17,9 +17,9 @@ import { getPlayers } from '../api/api'
 import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
-  props: {
-    msg: String
-  },
+  // props: {
+  //   msg: String
+  // },
   setup() {
     const playerObj = ref<object>()
 
