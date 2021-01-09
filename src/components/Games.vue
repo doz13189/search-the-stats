@@ -1,30 +1,49 @@
 <template>
-  <div>
-    <p>min : {{ stats.result.value.data?.[0] }}</p>
-    <p>loading : {{ stats.loading.value }}</p>
-    <p>error : {{ stats.error.value }}</p>
-  </div>
+  <p>{{ new Date().toLocaleString('en-GB') }}</p>
+  <!-- <p>{{ games.result.value.data }}</p> -->
+    <!-- :class="['clickable', email.read ? 'read' : '']"
+    @click="openEmail(email)"> -->
+    <tr v-for="game in games.result.value.data"
+        :key="game.id"
+        >
+      <td>
+        {{ game.home_team.full_name }}
+      </td>
+      <td>
+        {{ game.home_team_score }}
+      </td>
+      <td> - </td>
+      <td>
+        {{ game.visitor_team_score }}
+      </td>
+      <td>
+        {{ game.visitor_team.full_name }}
+      </td>
+    </tr>
+  <p>loading : {{ games.loading.value }}</p>
+  <p>error : {{ games.error.value }}</p>
+
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { getStats } from '../api/api'
+import { defineComponent, ref } from 'vue';
+import { getAllGames } from '../api/api'
 import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
   setup() {
-    const stats = useRequest(getStats)
-    stats.createRequest({
-        'player_ids[]': 666609
-    })
-
+    const games = useRequest(getAllGames)
+    games.createRequest({
+      'dates[]': '20210108'
+    }).then(() => console.log(games.result.value) )
+    
     return {
-      stats
+      // search,
+      games
     }
   }
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>

@@ -17,7 +17,6 @@ export const searchPlayers = (name: string) => {
   )
 }
 
-
 export const getPlayers = (id: number) => {
   return request(
     '/players',
@@ -27,6 +26,14 @@ export const getPlayers = (id: number) => {
 
 type statsType = {
   'player_ids[]': number
+}
+
+export const getAllGames = (params: object) => {
+  const param = createParam(params)
+  return request(
+    '/games',
+    param
+  )
 }
 
 export const getStats = (params: statsType) => {

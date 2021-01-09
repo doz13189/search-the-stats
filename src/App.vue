@@ -1,20 +1,20 @@
 <template>
-  <Search/>
+  <!-- <Search/> -->
   <!-- <Players/> -->
-  <!-- <Games/> -->
+  <Games/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Search from "./components/Search.vue";
+// import Search from "./components/Search.vue";
 // import Players from "./components/Players.vue";
-// import Games from "./components/Games.vue";
+import Games from "./components/Games.vue";
 
 export default defineComponent({
   components: {
-    Search,
+    // Search,
     // Players,
-    // Games
+    Games
   }
 });
 </script>
