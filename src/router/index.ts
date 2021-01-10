@@ -6,6 +6,7 @@ import Stats from '@/views/Stats.vue';
 const routes = [
   {
     path: '/',
+    name: 'Search',
     component: Search,
   },
   {

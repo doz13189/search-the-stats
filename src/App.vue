@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Search from "@/views/Search.vue";
 
 export default defineComponent({
   components: {

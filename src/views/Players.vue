@@ -1,38 +1,26 @@
 <template>
-  <!-- <button @click="page--">previous</button>
-  <button @click="page++">next</button>
-  <p>page : {{ page }}</p> -->
-  <p>current_page : {{ results.result.value.meta?.current_page }}</p>
-  <p>total page : {{ results.result.value.meta?.total_pages }}</p>
-  <p>{{ results.result.value.meta }}</p>
-
-  <tr v-for="player in results.result.value.data"
+  <!-- <p>{{ players.value }}</p> -->
+  <tr v-for="player in players.result.value.data"
       :key="player.id"
       >
     <td>
-      <!-- <button @click="playerId = player.id">detail</button> -->
-      <router-link to="/stats">Stats</router-link>
+      <router-link :to="{ name: 'Stats', params: { playerId: player.id } }">Stats</router-link>
     </td>
-    <td>
+    <td >
       {{ player }}
     </td>
   </tr>
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
-    result: Object
+    players: Object
   },
-  setup(props) {
-    let results: any = {};
-    watch(props, () => {
-      results = props.result
-    })
+  setup() {
     return {
-      results
     }
   }
 });
