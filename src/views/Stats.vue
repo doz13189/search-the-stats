@@ -17,16 +17,13 @@ import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
   props: {
-    playerId: Number
+    playerId: String
   },
   setup(props) {
     const stats = useRequest(getStats)
-
-    watch(props, () => {
-      stats.createRequest({
-        'player_ids[]': props.playerId,
-        'seasons[]': 2020
-      })
+    stats.createRequest({
+      'player_ids[]': String(props.playerId),
+      'seasons[]': 2020
     })
 
     return {

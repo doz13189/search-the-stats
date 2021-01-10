@@ -1,24 +1,13 @@
 <template>
-  <Search/>
-
-  <!-- <Players/> -->
-  <!-- <Games/>
-  <SpecificGame/> -->
+  <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Search from "./components/Search.vue";
-// import Players from "./components/Players.vue";
-// import Games from "./components/Games.vue";
-// import SpecificGame from "./components/SpecificGame.vue";
+import Search from "@/views/Search.vue";
 
 export default defineComponent({
   components: {
-    Search
-    // Players,
-    // Games,
-    // SpecificGame
   }
 });
 </script>
