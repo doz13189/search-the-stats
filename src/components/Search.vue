@@ -17,9 +17,13 @@
       :key="player.id"
       >
     <td>
+      <button @click="playerId = player.id">detail</button>
+    </td>
+    <td >
       {{ player }}
     </td>
   </tr>
+  <Stats :playerId="playerId"/>
 
 </template>
 
@@ -28,11 +32,17 @@ import { defineComponent, ref, watch } from 'vue';
 import { searchPlayers } from '../api/api'
 import { useRequest } from '../utils/useRequest'
 
+import Stats from "./Stats.vue";
+
 export default defineComponent({
+  components: {
+    Stats
+  },
   setup() {
     const searchText = ref<string>('')
     const page = ref<number>(1)
     const players = useRequest(searchPlayers)
+    const playerId = ref<number | null>(null)
 
     const search = (page = 1) => {
       players.createRequest({
@@ -47,6 +57,7 @@ export default defineComponent({
     
     return {
       searchText,
+      playerId,
       page,
       search,
       players

@@ -1,5 +1,6 @@
 <template>
   <Search/>
+
   <!-- <Players/> -->
   <!-- <Games/>
   <SpecificGame/> -->
@@ -14,7 +15,7 @@ import Search from "./components/Search.vue";
 
 export default defineComponent({
   components: {
-    Search,
+    Search
     // Players,
     // Games,
     // SpecificGame
