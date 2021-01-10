@@ -6,14 +6,16 @@ const createParam = (params: object): string => {
     param += key
     param += '='
     param += value
+    param += '&'
   }
   return param
 }
 
-export const searchPlayers = (name: string) => {
+export const searchPlayers = (params: object) => {
+  const param = createParam(params)
   return request(
     '/players',
-    `?search=${name}`
+    param
   )
 }
 
@@ -33,6 +35,13 @@ export const getAllGames = (params: object) => {
   return request(
     '/games',
     param
+  )
+}
+
+export const getSpecificGame = (id: number) => {
+  return request(
+    '/games',
+    '/' + String(id)
   )
 }
 
