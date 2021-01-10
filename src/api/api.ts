@@ -53,4 +53,10 @@ export const getStats = (params: statsType) => {
   )
 }
 
-
+export const getSeasonAverages = (params: object) => {
+  const param = createParam(params)
+  return request(
+    '/season_averages',
+    param
+  )
+}

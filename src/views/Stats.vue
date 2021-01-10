@@ -2,6 +2,18 @@
   <router-link :to="{ name: 'Search' }">Search</router-link>
 
   <p>playerId : {{ playerId }}</p>
+  <p>season averages 2020-2021</p>
+  <p>{{ thisSeasonAverages.result.value.data }}</p>
+  <p>loading : {{ thisSeasonAverages.loading.value }}</p>
+  <p>error : {{ thisSeasonAverages.error.value }}</p>
+
+  <p>season averages 2019-2020</p>
+  <p>{{ lastSeasonAverages.result.value.data }}</p>
+  <p>loading : {{ lastSeasonAverages.loading.value }}</p>
+  <p>error : {{ lastSeasonAverages.error.value }}</p>
+
+
+  <p>stats</p>
   <p>loading : {{ stats.loading.value }}</p>
   <p>error : {{ stats.error.value }}</p>
 
@@ -17,7 +29,7 @@
 
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
-import { getStats } from '../api/api'
+import { getStats, getSeasonAverages } from '../api/api'
 import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
@@ -25,10 +37,25 @@ export default defineComponent({
     playerId: String
   },
   setup(props) {
+    const thisSeason = 2020
+    const lastSeason = thisSeason - 1
+
+    const thisSeasonAverages = useRequest(getSeasonAverages)
+    thisSeasonAverages.createRequest({
+      'player_ids[]': String(props.playerId),
+      'season': thisSeason,
+    })
+
+    const lastSeasonAverages = useRequest(getSeasonAverages)
+    lastSeasonAverages.createRequest({
+      'player_ids[]': String(props.playerId),
+      'season': lastSeason,
+    })
+
     const stats = useRequest(getStats)
     stats.createRequest({
       'player_ids[]': String(props.playerId),
-      'seasons[]': 2020,
+      'seasons[]': thisSeason,
       'per_page': 100,
       'postseason': false
     }).then(() => {
@@ -42,6 +69,8 @@ export default defineComponent({
     })
 
     return {
+      thisSeasonAverages,
+      lastSeasonAverages,
       stats
     }
   }
