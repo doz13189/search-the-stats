@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getStats } from '../api/api'
+import { getAllStats } from '../api/api'
 import { useRequest } from '../utils/useRequest'
 
 export default defineComponent({
@@ -24,14 +24,16 @@ export default defineComponent({
     season: Number
   },
   setup(props) {
-    const stats = useRequest(getStats)
+
+    const stats = useRequest(getAllStats)
     stats.createRequest({
-      'player_ids[]': String(props.playerId),
+      'player_ids[]': props.playerId,
       'seasons[]': props.season,
       'per_page': 100,
       'postseason': false
     }).then(() => {
       stats.result.value.data.sort((e1: any, e2: any) => {
+        console.log('e1', typeof e1)
         return e1.game.date < e2.game.date ? 1 : -1
       })
     }).then(() => {

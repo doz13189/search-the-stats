@@ -5,7 +5,7 @@ export const useRequest = (fn: any): any => {
   const loading = ref<boolean>(false)
   const error = ref<boolean>(false)
 
-  const createRequest = async (...args: (string|number)[] ) => {
+  const createRequest = async (...args: (string|number)[] ): Promise<void> => {
     result.value = {}
     loading.value = true
     error.value = false

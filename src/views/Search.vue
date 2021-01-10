@@ -1,7 +1,6 @@
 <template>
   <input type="search" v-model="searchText">
   <button @click="search()">search</button>
-  <!-- <p>{{ searchText }}</p> -->
 
   <p>loading : {{ players.loading.value }}</p>
   <p>error : {{ players.error.value }}</p>
@@ -11,7 +10,6 @@
   <p>page : {{ page }}</p>
   <p>current_page : {{ players.result.value.meta?.current_page }}</p>
   <p>total page : {{ players.result.value.meta?.total_pages }}</p>
-  <!-- <p>{{ players.result.value.meta }}</p> -->
 
   <Players :players="players"/>
 
@@ -19,8 +17,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { searchPlayers } from '../api/api'
 import { useRequest } from '../utils/useRequest'
+import { getAllPlayers } from '../api/api'
 
 import Players from "./Players.vue";
 
@@ -31,9 +29,9 @@ export default defineComponent({
   setup() {
     const searchText = ref<string>('')
     const page = ref<number>(1)
-    const players = useRequest(searchPlayers)
+    const players = useRequest(getAllPlayers)
 
-    const search = (page = 1) => {
+    const search: (page?: number) => void = (page = 1): void => {
       players.createRequest({
         search: searchText.value,
         page: page

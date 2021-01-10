@@ -19,8 +19,8 @@ export default defineComponent({
   setup(props) {
     const SeasonAverages = useRequest(getSeasonAverages)
     SeasonAverages.createRequest({
-      'player_ids[]': String(props.playerId),
-      'season': props.season
+      'player_ids[]': props.playerId,
+      season: props.season
     })
 
     return {
