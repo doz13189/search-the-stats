@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue';
+import { defineComponent } from 'vue';
 
 import SeasonAverages from '@/components/SeasonAverages.vue';
 import SeasonStats from '@/components/SeasonStats.vue';
@@ -21,7 +21,7 @@ export default defineComponent({
     SeasonAverages,
     SeasonStats
   },
-  setup(props) {
+  setup() {
     const thisSeason: number = new Date().getFullYear() - 1
     const lastSeason: number = thisSeason - 1
 

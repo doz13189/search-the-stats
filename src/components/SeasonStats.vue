@@ -33,7 +33,6 @@ export default defineComponent({
       'postseason': false
     }).then(() => {
       stats.result.value.data.sort((e1: any, e2: any) => {
-        console.log('e1', typeof e1)
         return e1.game.date < e2.game.date ? 1 : -1
       })
     }).then(() => {
