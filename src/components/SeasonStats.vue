@@ -26,6 +26,7 @@ export default defineComponent({
   setup(props) {
 
     const stats = useRequest(getAllStats)
+    // annotation is not work !! you have to check annotaion work when object passed as args
     stats.createRequest({
       'player_ids[]': props.playerId,
       'seasons[]': props.season,
