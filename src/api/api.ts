@@ -12,13 +12,10 @@ const createParam: createParamType = (params: object): string => {
   return param
 }
 
-type getAllPlayersParamType = {
-  page?: number,
-  per_page?: number,
-  search?: string
-}
-type getAllPlayersType = (params: object) => Promise<any>
-export const getAllPlayers: getAllPlayersType = (params: getAllPlayersParamType): Promise<any> => {
+
+type apiFunctionType = (params: any) => Promise<any>
+
+export const getAllPlayers: apiFunctionType = (params: object): Promise<any> => {
   const param = createParam(params)
   return request(
     '/players',
@@ -26,74 +23,59 @@ export const getAllPlayers: getAllPlayersType = (params: getAllPlayersParamType)
   )
 }
 
-type getSpecificPlayerParamType = {
-  id: number
-}
-type getSpecificPlayerType = (param: getSpecificPlayerParamType) => Promise<any>
-export const getSpecificPlayer: getSpecificPlayerType = (param: getSpecificPlayerParamType): Promise<any> => {
+
+export const getSpecificPlayer: apiFunctionType = (param: any): Promise<any> => {
   return request(
     '/players',
     '/' + String(param.id)
   )
 }
 
-type getAllTeamsParamType = {
-  page: number,
-  per_page: number
-}
+// type getAllTeamsParamType = {
+//   page: number,
+//   per_page: number
+// }
 // type getAllTeamsType = (param: getSpecificPlayerParamType) => Promise<any>
-export const getAllTeams = (param: getAllTeamsParamType) => console.log('not implement')
+// export const getAllTeams = (param: getAllTeamsParamType) => console.log('not implement')
 
 
-type getSpecificTeamsParamType = {
-  id: number
-}
+// type getSpecificTeamsParamType = {
+//   id: number
+// }
 // type getAllTeamsType = (param: gettSpecificTeamsParamType) => Promise<any>
-export const gettSpecificTeamsParam = (param: getSpecificTeamsParamType) => console.log('not implement')
+// export const gettSpecificTeamsParam = (param: object) => console.log('not implement')
 
-type getAllGamesParamType = {
-  page: number,
-  per_page: number,
-  dates: string,
-  seasons: string,
-  team_ids: number,
-  postseason: boolean,
-  start_date: string,
-  end_date: string
-}
-type getAllGamesType = (params: getAllGamesParamType) => Promise<any>
-export const getAllGames: getAllGamesType = (params: getAllGamesParamType): Promise<any> => {
-  const param = createParam(params)
-  return request(
-    '/games',
-    param
-  )
-}
+// type getAllGamesParamType = {
+//   page: number,
+//   per_page: number,
+//   dates: string,
+//   seasons: string,
+//   team_ids: number,
+//   postseason: boolean,
+//   start_date: string,
+//   end_date: string
+// }
 
-type getSpecificGameParamType = {
-  id: number
-}
-type getSpecificGameType = (param: getSpecificGameParamType) => Promise<any>
-export const getSpecificGame: getSpecificGameType = (param: getSpecificGameParamType) => {
-  return request(
-    '/games',
-    '/' + String(param.id)
-  )
-}
+// export const getAllGames: apiFunctionType = (params: object): Promise<any> => {
+//   const param = createParam(params)
+//   return request(
+//     '/games',
+//     param
+//   )
+// }
 
-type getAllStatsParamType = {
-  page?: number,
-  per_page?: number,
-  dates?: string,
-  seasons?: boolean,
-  'player_ids[]'?: number,
-  game_ids?: number,
-  postseason?: boolean,
-  start_date?: string,
-  end_date?: string
-}
-type getAllStatsType = (params: getAllStatsParamType) => Promise<any>
-export const getAllStats: getAllStatsType = (params: getAllStatsParamType) => {
+// type getSpecificGameParamType = {
+//   id: number
+// }
+// export const getSpecificGame: apiFunctionType = (param: object) => {
+//   return request(
+//     '/games',
+//     '/' + String(param.id)
+//   )
+// }
+
+
+export const getAllStats: apiFunctionType = (params: object) => {
   const param = createParam(params)
   return request(
     '/stats',
@@ -101,11 +83,7 @@ export const getAllStats: getAllStatsType = (params: getAllStatsParamType) => {
   )
 }
 
-type getSeasonAverages = {
-  season: number,
-  'player_ids[]': string
-}
-export const getSeasonAverages = (params: getSeasonAverages) => {
+export const getSeasonAverages = (params: object) => {
   const param = createParam(params)
   return request(
     '/season_averages',

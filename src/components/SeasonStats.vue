@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getAllStats } from '../api/api'
-import { useRequest } from '../utils/useRequest'
+import { UseRequest } from '../utils/useRequest'
 
 export default defineComponent({
   props: {
@@ -24,10 +24,21 @@ export default defineComponent({
     season: Number
   },
   setup(props) {
+    type getAllStatsParamType = {
+      page?: number,
+      per_page?: number,
+      dates?: string,
+      'seasons[]'?: number,
+      'player_ids[]'?: string,
+      game_ids?: number,
+      postseason?: boolean,
+      start_date?: string,
+      end_date?: string
+    }
 
-    const stats = useRequest(getAllStats)
+    const stats = new UseRequest(getAllStats)
     // annotation is not work !! you have to check annotaion work when object passed as args
-    stats.createRequest({
+    stats.createRequest<getAllStatsParamType>({
       'player_ids[]': props.playerId,
       'seasons[]': props.season,
       'per_page': 100,

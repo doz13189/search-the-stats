@@ -1,30 +1,48 @@
 import { ref } from 'vue'
 
-export const useRequest = (fn: any): any => {
-  const result = ref<object>({})
-  const loading = ref<boolean>(false)
-  const error = ref<boolean>(false)
+export class UseRequest {
+  private _result = ref<any>({})
+  private _loading = ref<boolean>(false)
+  private _error = ref<boolean>(false)
+  private _fn
 
-  const createRequest = async (...args: (string|number)[] ): Promise<void> => {
-    result.value = {}
-    loading.value = true
-    error.value = false
+  constructor(fn: Function) {
+    this._fn = fn
+  }
 
-    const response = await fn(...args)
+  async createRequest<T>(args: T): Promise<void> {
+    this._result.value = {}
+    this._loading.value = true
+    this._error.value = false
+
+    const response = await this._fn(args)
 
     if (response.status === 200) {
-      result.value = response.data
+      this._result.value = response.data
     } else {
-      error.value = true
+      this._error.value = true
     }
 
-    loading.value = false
+    this._loading.value = false
   }
 
-  return {
-    result,
-    loading,
-    error,
-    createRequest
+  get result() {
+    return this._result
   }
+
+  get loading() {
+    return this._loading
+  }
+
+  get error() {
+    return this._error
+  }
+
+
+  // return {
+  //   result,
+  //   loading,
+  //   error,
+  //   createRequest
+  // }
 }

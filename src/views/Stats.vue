@@ -1,6 +1,7 @@
 <template>
   <router-link :to="{ name: 'Search' }">Search</router-link>
 
+  <PlayerDetails :playerId="playerId"/>
   <SeasonAverages :playerId="playerId" :season="thisSeason"/>
   <SeasonAverages :playerId="playerId" :season="lastSeason"/>
   <SeasonStats :playerId="playerId" :season="thisSeason"/>
@@ -12,6 +13,7 @@ import { defineComponent } from 'vue';
 
 import SeasonAverages from '@/components/SeasonAverages.vue';
 import SeasonStats from '@/components/SeasonStats.vue';
+import PlayerDetails from '@/components/PlayerDetails.vue';
 
 export default defineComponent({
   props: {
@@ -19,7 +21,8 @@ export default defineComponent({
   },
   components: {
     SeasonAverages,
-    SeasonStats
+    SeasonStats,
+    PlayerDetails
   },
   setup() {
     const thisSeason: number = new Date().getFullYear() - 1

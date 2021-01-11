@@ -1,5 +1,4 @@
 <template>
-  <p>playerId : {{ playerId }}</p>
   <p>season averages {{ season }}- {{ season - 1 }}</p>
   <p>{{ SeasonAverages.result.value.data }}</p>
   <p>loading : {{ SeasonAverages.loading.value }}</p>
@@ -9,7 +8,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getSeasonAverages } from '../api/api'
-import { useRequest } from '../utils/useRequest'
+import { UseRequest } from '../utils/useRequest'
 
 export default defineComponent({
   props: {
@@ -17,10 +16,15 @@ export default defineComponent({
     season: Number
   },
   setup(props) {
-    const SeasonAverages = useRequest(getSeasonAverages)
-    SeasonAverages.createRequest({
-      'player_ids[]': props.playerId,
-      season: props.season
+    type getSeasonAveragesParamType = {
+      season: number,
+      'player_ids[]': string
+    }
+
+    const SeasonAverages = new UseRequest(getSeasonAverages)
+    SeasonAverages.createRequest<getSeasonAveragesParamType>({
+      'player_ids[]': props.playerId!,
+      season: props.season!
     })
 
     return {

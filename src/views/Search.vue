@@ -1,41 +1,52 @@
 <template>
   <input type="search" v-model="searchText">
-  <button @click="search()">search</button>
+  <button @click="search()" :disabled="!searchText">search</button>
 
   <p>loading : {{ players.loading.value }}</p>
   <p>error : {{ players.error.value }}</p>
 
-  <button @click="page--">previous</button>
-  <button @click="page++">next</button>
-  <p>page : {{ page }}</p>
-  <p>current_page : {{ players.result.value.meta?.current_page }}</p>
-  <p>total page : {{ players.result.value.meta?.total_pages }}</p>
+  <div v-if="Boolean(players.result.value.data)">
 
-  <Players :players="players"/>
+    <p>page : {{ page }}</p>
+    <p>current_page : {{ players.result.value.meta?.current_page }}</p>
+    <p>total page : {{ players.result.value.meta?.total_pages }}</p>
+    <button @click="page--" :disabled="players.result.value.meta?.current_page === 1">previous</button>
+    <button @click="page++" :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages">next</button>
+    <hr>
+
+    <Players :players="players"/>
+  </div>
 
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { useRequest } from '../utils/useRequest'
+import { UseRequest } from '../utils/useRequest'
 import { getAllPlayers } from '../api/api'
 
-import Players from "./Players.vue";
+import Players from "@/components/Players.vue";
 
 export default defineComponent({
   components: {
     Players
   },
   setup() {
+    type getAllPlayersParamType = {
+      search?: string,
+      page?: number,
+      per_page?: number
+    }
+
     const searchText = ref<string>('')
     const page = ref<number>(1)
-    const players = useRequest(getAllPlayers)
+    const players = new UseRequest(getAllPlayers)
 
     const search: (page?: number) => void = (page = 1): void => {
-      players.createRequest({
+      players.createRequest<getAllPlayersParamType>({
         search: searchText.value,
         page: page
-      }).then(() => {
+      })
+      .then(() => {
         page = players.result.value.meta.current_page
       })
     }
