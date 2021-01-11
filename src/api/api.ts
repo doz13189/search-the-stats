@@ -75,7 +75,7 @@ export const getSpecificPlayer: apiFunctionType = (param: any): Promise<any> => 
 // }
 
 
-export const getAllStats: apiFunctionType = (params: object) => {
+export const getAllStats: apiFunctionType = (params: object): Promise<any> => {
   const param = createParam(params)
   return request(
     '/stats',
@@ -83,7 +83,7 @@ export const getAllStats: apiFunctionType = (params: object) => {
   )
 }
 
-export const getSeasonAverages = (params: object) => {
+export const getSeasonAverages: apiFunctionType = (params: object): Promise<any> => {
   const param = createParam(params)
   return request(
     '/season_averages',

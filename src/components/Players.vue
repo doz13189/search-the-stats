@@ -1,15 +1,35 @@
 <template>
   <!-- <p>{{ players.value }}</p> -->
-  <tr v-for="player in players.result.value.data"
-      :key="player.id"
-      >
-    <td>
-      <router-link :to="{ name: 'Stats', params: { playerId: player.id } }">Stats</router-link>
-    </td>
-    <td >
-      {{ player }}
-    </td>
-  </tr>
+  <table align="center">
+    <thead>
+      <th></th>
+      <th>name</th>
+      <th>position</th>
+      <th>team</th>
+    </thead>
+
+    <tbody>
+      <tr v-for="player in players.result.value.data"
+          :key="player.id"
+          >
+        <td>
+          <router-link :to="{ name: 'Stats', params: { playerId: player.id } }">Check the Stats</router-link>
+        </td>
+        <td >
+          {{ player.first_name }} {{ player.last_name }}
+        </td>
+        <td >
+          {{ player.position }}
+        </td>
+        <td >
+          {{ player.team.full_name }}
+        </td>
+        <!-- <td >
+          {{ player }}
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script lang="ts">

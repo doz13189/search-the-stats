@@ -1,8 +1,10 @@
 <template>
   <p>season averages {{ season }}- {{ season - 1 }}</p>
-  <p>{{ SeasonAverages.result.value.data }}</p>
+  <!-- <p>{{ SeasonAverages.result.value.data[0] }}</p> -->
   <p>loading : {{ SeasonAverages.loading.value }}</p>
   <p>error : {{ SeasonAverages.error.value }}</p>
+  <p>{{ SeasonAverages.result.value?.data }}</p>
+
 </template>
 
 <script lang="ts">

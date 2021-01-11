@@ -1,7 +1,21 @@
 <template>
-  <p>{{ specificPlayer.result.value }}</p>
   <p>loading : {{ specificPlayer.loading.value }}</p>
   <p>error : {{ specificPlayer.error.value }}</p>
+
+  <table align="center">
+    <!-- <thead>
+      <th></th>
+    </thead> -->
+
+    <tbody>
+      <tr v-for="player in Object.entries(specificPlayer.result.value)"
+          :key="player"
+          >
+          <td>{{ player[0] }}</td>
+          <td>{{ player[1] }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script lang="ts">
