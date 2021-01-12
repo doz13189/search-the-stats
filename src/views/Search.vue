@@ -7,7 +7,7 @@
 
   <div v-if="players.result.value.data">
 
-    <p>page : {{ page }}</p>
+    <p data-testid="page-paragraph">page : {{ page }}</p>
     <p>current_page : {{ players.result.value.meta?.current_page }}</p>
     <p>total page : {{ players.result.value.meta?.total_pages }}</p>
     <button @click="page--" :disabled="players.result.value.meta?.current_page === 1">previous</button>

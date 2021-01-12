@@ -1,31 +1,67 @@
+import axios from 'axios'
 import { shallowMount } from "@vue/test-utils";
 
 import Search from "@/views/Search.vue";
 
-jest.mock('axios');
-// ## input
-// - Component Data
-// - Component Props
-// - User Interaction
-// - Ex: user clicks a button
-// - Lifecycle Methods
-// - mounted(), created(), etc.
-// - Vuex Store
-// - Route Params
+const response = {
+  "data": {
+    "data":[
+      {
+        "id":470,
+        "first_name":"Yuta",
+        "height_feet":6,
+        "height_inches":9,
+        "last_name":"Watanabe",
+        "position":"G",
+        "team": {
+          "id":28,
+          "abbreviation":"TOR",
+          "city":"Toronto",
+          "conference":"East",
+          "division":"Atlantic",
+          "full_name":"Toronto Raptors",
+          "name":"Raptors"
+        },
+        "weight_pounds":205
+      }
+    ],
+    "meta": {
+      "total_pages":1,
+      "current_page":1,
+      "next_page":null,
+      "per_page":25,
+      "total_count":1
+    }
+  },
+  "status":200,
+  "statusText":"OK",
+  "headers": {
+    "cache-control":"max-age=0, private, must-revalidate","content-type":"application/json; charset=utf-8"
+  },
+  "config": {
+    "url":"https://www.balldontlie.io/api/v1/players?search=wata&page=1&",
+    "method":"get",
+    "headers": {
+      "Accept":"application/json, text/plain, */*"
+    },
+    "transformRequest":[null],
+    "transformResponse":[null],
+    "timeout":0,
+    "xsrfCookieName":"XSRF-TOKEN",
+    "xsrfHeaderName":"X-XSRF-TOKEN",
+    "maxContentLength":-1,
+    "maxBodyLength":-1
+  },
+  "request":{}
+}
 
-// ## output
-// - What is rendered to the DOM
-// - External function calls
-// - Events emitted by the component
-// - Route Changes
-// - Updates to the Vuex Store
-// - Connection with children
-// - i.e. changes in child components
+jest.mock('axios')
+
 
 // number : event(input) - result(output)
-// Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)
-// (bad test) Press the search button (User Interaction) - loading status will be true (nothing...)
-// (bad test) Press the search button (User Interaction) - error status will be true when receiving an error response (nothing...)
+// (done) Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)
+// (pass) (bad test) Press the search button (User Interaction) - loading status will be true (nothing...)
+// (pass) (bad test) Press the search button (User Interaction) - error status will be true when receiving an error response (nothing...)
 // Press the search button (User Interaction) -  "page" is rendered (What is rendered to the DOM)
 // Press the search button (User Interaction) -  "current_page" is rendered (What is rendered to the DOM)
 // Press the search button (User Interaction) -  "total page" is rendered (What is rendered to the DOM)
@@ -37,18 +73,34 @@ jest.mock('axios');
 // Press the Check the Stats button (User Interaction) - Go to the PlayerDetail page (Route Changes)
 
 describe("Search.vue", () => {
-  it("Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)", async () => {
+  beforeEach(() => {
+    axios.get.mockResolvedValueOnce(response)
+  })
+
+  it('Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)', async () => {
     const wrapper = shallowMount(Search)
     const searchInput = wrapper.find('[data-testid="search-input"]')
     expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toMatch('')
     searchInput.setValue('test')
+
     await wrapper.find('[data-testid="search-button"]').trigger('click')
     expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
-  });
+  })
 
-  // it("renders props.msg when passed", () => {
-  //   const wrapper = shallowMount(Players);
+  it('Press the search button (User Interaction) -  "page" is rendered (What is rendered to the DOM)', async () => {
+    // const response = [ {"message":"Request failed with status code 404","name":"Error","stack":"Error: Request failed with status code 404\n    at createError (webpack-internal:///./node_modules/axios/lib/core/createError.js:16:15)\n    at settle (webpack-internal:///./node_modules/axios/lib/core/settle.js:17:12)\n    at XMLHttpRequest.handleLoad (webpack-internal:///./node_modules/axios/lib/adapters/xhr.js:62:7)","config":{"url":"https://www.balldontlie.io/api/v2/players/666609","method":"get","headers":{"Accept":"application/json, text/plain, */*"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1}} ]
     
-  //   // expect(wrapper.text()).toMatch(msg);
-  // });
-});
+    const wrapper = shallowMount(Search)
+    const searchInput = wrapper.find('[data-testid="search-input"]')
+    searchInput.setValue('test')
+    await wrapper.find('[data-testid="search-button"]').trigger('click')
+    await wrapper.find('[data-testid="search-button"]').trigger('click')
+    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.find('[data-testid="page-paragraph"]').element.textContent).toMatch('page : 1')
+  })
+
+
+
+})
