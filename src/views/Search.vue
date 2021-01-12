@@ -1,6 +1,6 @@
 <template>
-  <input type="search" v-model="searchText">
-  <button @click="search()" :disabled="!searchText">search</button>
+  <input type="text" v-model="searchText" data-testid="search-input">
+  <button @click="search()" :disabled="!searchText" data-testid="search-button">search</button>
 
   <p>loading : {{ players.loading.value }}</p>
   <p>error : {{ players.error.value }}</p>

@@ -22,7 +22,7 @@ jest.mock('axios');
 // - Connection with children
 // - i.e. changes in child components
 
-// event(input) - result(output)
+// number : event(input) - result(output)
 // Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)
 // (bad test) Press the search button (User Interaction) - loading status will be true (nothing...)
 // (bad test) Press the search button (User Interaction) - error status will be true when receiving an error response (nothing...)
@@ -36,16 +36,14 @@ jest.mock('axios');
 // Press the next button (User Interaction) - The next page is displayed (What is rendered to the DOM)
 // Press the Check the Stats button (User Interaction) - Go to the PlayerDetail page (Route Changes)
 
-
 describe("Search.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    // const wrapper = shallowMount(Search, {
-    //   props: { msg }
-    // });
+  it("Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)", async () => {
     const wrapper = shallowMount(Search)
-
-    // expect(wrapper.text()).toMatch(msg);
+    const searchInput = wrapper.find('[data-testid="search-input"]')
+    expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toMatch('')
+    searchInput.setValue('test')
+    await wrapper.find('[data-testid="search-button"]').trigger('click')
+    expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
   });
 
   // it("renders props.msg when passed", () => {

@@ -38,8 +38,6 @@ export default defineComponent({
     thisSeasonAverages.createRequest<getSeasonAveragesParamType>({
       'player_ids[]': props.playerId!,
       season: props.season!
-    }).then(() => {
-      console.log('Boolean', thisSeasonAverages.result.value.data)
     })
 
     const lastSeasonAverages = new UseRequest(getSeasonAverages)
@@ -47,8 +45,6 @@ export default defineComponent({
       'player_ids[]': props.playerId!,
       season: props.season! - 1
     })
-
-    console.log('Boolean', thisSeasonAverages.result.value.data)
 
     return {
       thisSeasonAverages,
