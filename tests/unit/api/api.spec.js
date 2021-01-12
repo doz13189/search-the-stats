@@ -8,6 +8,12 @@ jest.mock('axios')
 // const resp = { data: samples }
 // const response = [ {"message":"Request failed with status code 404","name":"Error","stack":"Error: Request failed with status code 404\n    at createError (webpack-internal:///./node_modules/axios/lib/core/createError.js:16:15)\n    at settle (webpack-internal:///./node_modules/axios/lib/core/settle.js:17:12)\n    at XMLHttpRequest.handleLoad (webpack-internal:///./node_modules/axios/lib/adapters/xhr.js:62:7)","config":{"url":"https://www.balldontlie.io/api/v2/players/666609","method":"get","headers":{"Accept":"application/json, text/plain, */*"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1}} ]
 
+// test list
+// getAllPlayers
+// getSpecificPlayer
+// getSeasonAverages
+// getAllStats
+
 describe("api.ts", () => {
 
   beforeEach(() => {

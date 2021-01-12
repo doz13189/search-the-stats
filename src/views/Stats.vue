@@ -3,7 +3,7 @@
 
   <PlayerDetails :playerId="playerId"/>
   <SeasonAverages :playerId="playerId" :season="thisSeason"/>
-  <SeasonAverages :playerId="playerId" :season="lastSeason"/>
+  <!-- <SeasonAverages :playerId="playerId" :season="lastSeason"/> -->
   <SeasonStats :playerId="playerId" :season="thisSeason"/>
 
 </template>
@@ -26,11 +26,11 @@ export default defineComponent({
   },
   setup() {
     const thisSeason: number = new Date().getFullYear() - 1
-    const lastSeason: number = thisSeason - 1
+    // const lastSeason: number = thisSeason - 1
 
     return {
       thisSeason,
-      lastSeason
+      // lastSeason
     }
   }
 });

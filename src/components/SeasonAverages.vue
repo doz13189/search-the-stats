@@ -1,9 +1,20 @@
 <template>
   <p>season averages {{ season }}- {{ season - 1 }}</p>
-  <!-- <p>{{ SeasonAverages.result.value.data[0] }}</p> -->
-  <p>loading : {{ SeasonAverages.loading.value }}</p>
-  <p>error : {{ SeasonAverages.error.value }}</p>
-  <p>{{ SeasonAverages.result.value?.data }}</p>
+  <!-- <p>{{ thisSeasonAverages.result.value.data[0] }}</p> -->
+  <p>loading : {{ thisSeasonAverages.loading.value }}</p>
+  <p>error : {{ thisSeasonAverages.error.value }}</p>
+  <div v-if="thisSeasonAverages.result.value.data">
+    <p>{{ thisSeasonAverages.result.value.data[0] }}</p>
+  </div>
+
+  <p>season averages {{ season - 1 }}- {{ season - 2 }}</p>
+  <!-- <p>{{ thisSeasonAverages.result.value.data[0] }}</p> -->
+  <p>loading : {{ lastSeasonAverages.loading.value }}</p>
+  <p>error : {{ lastSeasonAverages.error.value }}</p>
+
+  <div v-if="lastSeasonAverages.result.value.data">
+    <p>{{ lastSeasonAverages.result.value.data[0] }}</p>
+  </div>
 
 </template>
 
@@ -23,14 +34,25 @@ export default defineComponent({
       'player_ids[]': string
     }
 
-    const SeasonAverages = new UseRequest(getSeasonAverages)
-    SeasonAverages.createRequest<getSeasonAveragesParamType>({
+    const thisSeasonAverages = new UseRequest(getSeasonAverages)
+    thisSeasonAverages.createRequest<getSeasonAveragesParamType>({
       'player_ids[]': props.playerId!,
       season: props.season!
+    }).then(() => {
+      console.log('Boolean', thisSeasonAverages.result.value.data)
     })
 
+    const lastSeasonAverages = new UseRequest(getSeasonAverages)
+    lastSeasonAverages.createRequest<getSeasonAveragesParamType>({
+      'player_ids[]': props.playerId!,
+      season: props.season! - 1
+    })
+
+    console.log('Boolean', thisSeasonAverages.result.value.data)
+
     return {
-      SeasonAverages
+      thisSeasonAverages,
+      lastSeasonAverages
     }
   }
 });

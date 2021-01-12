@@ -5,7 +5,7 @@
   <p>loading : {{ players.loading.value }}</p>
   <p>error : {{ players.error.value }}</p>
 
-  <div v-if="Boolean(players.result.value.data)">
+  <div v-if="players.result.value.data">
 
     <p>page : {{ page }}</p>
     <p>current_page : {{ players.result.value.meta?.current_page }}</p>

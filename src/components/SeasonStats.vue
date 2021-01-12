@@ -3,14 +3,26 @@
   <p>loading : {{ stats.loading.value }}</p>
   <p>error : {{ stats.error.value }}</p>
 
-  <p>{{ stats.result.value.meta }}</p>
-  <tr v-for="stat in stats.result.value.data"
-      :key="stat.id"
-      >
-    <td>
-      {{ stat }}
-    </td>
-  </tr>
+  <!-- <p>{{ stats.result.value.meta }}</p> -->
+
+  <div v-if="stats.result.value.data">
+    <table align="center">
+      <!-- <thead>
+        <th></th>
+      </thead> -->
+
+      <tbody>
+        <tr v-for="stat in stats.result.value.data"
+            :key="stat.id"
+            >
+          <td>
+            {{ stat }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </template>
 
 <script lang="ts">
