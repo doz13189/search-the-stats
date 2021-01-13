@@ -1,26 +1,36 @@
 <template>
-  <p>stats</p>
-  <p>loading : {{ stats.loading.value }}</p>
-  <p>error : {{ stats.error.value }}</p>
+  <div class="block">
+    <p>loading : {{ stats.loading.value }}</p>
+    <p>error : {{ stats.error.value }}</p>
+  </div>
 
   <!-- <p>{{ stats.result.value.meta }}</p> -->
 
   <div v-if="stats.result.value.data">
-    <table align="center">
-      <!-- <thead>
-        <th></th>
-      </thead> -->
 
-      <tbody>
-        <tr v-for="stat in stats.result.value.data"
-            :key="stat.id"
-            >
-          <td>
-            {{ stat }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="table-container">
+      <table class="table is-bordered" align="center">
+        <thead>
+          <!-- <tr v-for="stat in stats.result.value.data[0]"
+              :key="stat.id"
+              >
+            <th v-for="s in Object.entries(stat)" :key="s">
+              {{ s[0] }}
+            </th>
+          </tr> -->
+        </thead>
+
+        <tbody>
+          <tr v-for="stat in stats.result.value.data"
+              :key="stat.id"
+              >
+            <td v-for="s in Object.entries(stat)" :key="s">
+              {{ s }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 </template>

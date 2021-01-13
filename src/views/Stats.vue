@@ -1,5 +1,7 @@
 <template>
-  <router-link :to="{ name: 'Search' }">Search</router-link>
+  <div class="block"></div>
+
+  <router-link class="button is-primary is-rounded" :to="{ name: 'Search' }">Back</router-link>
 
   <PlayerDetails :playerId="playerId"/>
   <SeasonAverages :playerId="playerId" :season="thisSeason"/>

@@ -1,20 +1,44 @@
 <template>
-  <p>season averages {{ season }}- {{ season - 1 }}</p>
-  <!-- <p>{{ thisSeasonAverages.result.value.data[0] }}</p> -->
-  <p>loading : {{ thisSeasonAverages.loading.value }}</p>
-  <p>error : {{ thisSeasonAverages.error.value }}</p>
-  <div v-if="thisSeasonAverages.result.value.data">
-    <p>{{ thisSeasonAverages.result.value.data[0] }}</p>
+  <div class="block">
+    <p>season averages {{ season }}- {{ season - 1 }}</p>
+    <p>loading : {{ thisSeasonAverages.loading.value }}</p>
+    <p>error : {{ thisSeasonAverages.error.value }}</p>
   </div>
 
-  <p>season averages {{ season - 1 }}- {{ season - 2 }}</p>
-  <!-- <p>{{ thisSeasonAverages.result.value.data[0] }}</p> -->
-  <p>loading : {{ lastSeasonAverages.loading.value }}</p>
-  <p>error : {{ lastSeasonAverages.error.value }}</p>
-
-  <div v-if="lastSeasonAverages.result.value.data">
-    <p>{{ lastSeasonAverages.result.value.data[0] }}</p>
+  <div class="block">
+    <p>season averages {{ season - 1 }}- {{ season - 2 }}</p>
+    <p>loading : {{ lastSeasonAverages.loading.value }}</p>
+    <p>error : {{ lastSeasonAverages.error.value }}</p>
   </div>
+
+  <div v-if="thisSeasonAverages.result.value.data && lastSeasonAverages.result.value.data">
+
+    <div class="table-container">
+      <table class="table is-bordered" align="center">
+        <thead>
+          <th v-for="stat in Object.entries(thisSeasonAverages.result.value.data[0])" :key="stat.id">
+            {{ stat[0] }}
+          </th>
+        </thead>
+
+        <tbody>
+          
+          <tr>
+            <td v-for="stat in Object.entries(thisSeasonAverages.result.value.data[0])" :key="stat.id">
+              {{ stat[1] }}
+            </td>
+          </tr>
+
+          <tr>
+            <td v-for="stat in Object.entries(lastSeasonAverages.result.value.data[0])" :key="stat.id">
+              {{ stat[1] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 
 </template>
 

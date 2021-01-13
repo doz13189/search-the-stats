@@ -1,6 +1,6 @@
 <template>
   <!-- <p>{{ players.value }}</p> -->
-  <table align="center">
+  <table class="table is-bordered" align="center">
     <thead>
       <th></th>
       <th>name</th>
@@ -13,7 +13,7 @@
           :key="player.id"
           >
         <td>
-          <router-link :to="{ name: 'Stats', params: { playerId: player.id } }">Check the Stats</router-link>
+          <router-link class="button is-primary is-small is-rounded" :to="{ name: 'Stats', params: { playerId: player.id } }">Check the Stats</router-link>
         </td>
         <td >
           {{ player.first_name }} {{ player.last_name }}
@@ -30,6 +30,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="block"></div>
 </template>
 
 <script lang="ts">

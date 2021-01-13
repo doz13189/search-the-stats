@@ -1,7 +1,7 @@
 <template>
 
   <div class="block">
-    Please enter <strong>the player name</strong>.
+    <!-- Please enter <strong>the player name</strong>. -->
   </div>
 
   <div class="columns is-mobile is-centered">
@@ -10,25 +10,21 @@
         <input class="input is-rounded" type="text" v-model="searchText" data-testid="search-input">
       </div>
       <div class="control">
-        <button class="button is-rounded" @click="search()" :disabled="!searchText" data-testid="search-button">
+        <button class="button is-rounded is-primary" @click="search()" :disabled="!searchText" data-testid="search-button">
           Search
         </button>
       </div>
     </div>
   </div>
   
-  <p>loading : {{ players.loading.value }}</p>
-  <p>error : {{ players.error.value }}</p>
+  <div class="block">
+    <p>loading : {{ players.loading.value }}</p>
+    <p>error : {{ players.error.value }}</p>
+  </div>
 
   <div v-if="players.result.value.data">
 
     <nav class="level is-mobile">
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Page</p>
-          <p class="title" data-testid="page-paragraph">{{ page }}</p>
-        </div>
-      </div>
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Current Page</p>
@@ -46,6 +42,7 @@
     <nav class="level is-mobile">
       <div class="level-item has-text-centered">
         <button
+          class="button is-rounded"
           @click="page--"
           :disabled="players.result.value.meta?.current_page === 1"
           data-testid="previous-button">
@@ -54,6 +51,7 @@
       </div>
       <div class="level-item has-text-centered">
         <button
+          class="button is-rounded"
           @click="page++"
           :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages"
           data-testid="next-button">
