@@ -8,10 +8,21 @@
   <div v-if="players.result.value.data">
 
     <p data-testid="page-paragraph">page : {{ page }}</p>
-    <p>current_page : {{ players.result.value.meta?.current_page }}</p>
-    <p>total page : {{ players.result.value.meta?.total_pages }}</p>
-    <button @click="page--" :disabled="players.result.value.meta?.current_page === 1">previous</button>
-    <button @click="page++" :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages">next</button>
+    <p data-testid="current-page-paragraph">current_page : {{ players.result.value.meta?.current_page }}</p>
+    <p data-testid="total-page-paragraph">total page : {{ players.result.value.meta?.total_pages }}</p>
+    <button
+      @click="page--"
+      :disabled="players.result.value.meta?.current_page === 1"
+      data-testid="previous-button">
+      previous
+    </button>
+    <button
+      @click="page++"
+      :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages"
+      data-testid="next-button">
+      next
+    </button>
+    
     <hr>
 
     <Players :players="players"/>
