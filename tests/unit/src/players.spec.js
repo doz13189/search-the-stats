@@ -3,8 +3,13 @@ import { shallowMount } from "@vue/test-utils";
 import flushPromises from 'flush-promises'
 
 import Search from "@/views/Search.vue";
+import {
+  firstResponse200,
+  secondResponse200,
+  thirddResponse200,
+  forthResponse200
+} from './response.js'
 
-import { firstResponse200, secondResponse200, thirddResponse200, forthResponse200 } from './response.js'
 jest.mock('axios')
 
 // number : event(input) - result(output)
@@ -15,7 +20,7 @@ jest.mock('axios')
 // (done) Press the search button (User Interaction) -  "current_page" is rendered (What is rendered to the DOM)
 // (done) Press the search button (User Interaction) -  "total page" is rendered (What is rendered to the DOM)
 // (done) Press the search button (User Interaction) -  previous button is rendered (What is rendered to the DOM)
-// Press the search button (User Interaction) -  next button is rendered (What is rendered to the DOM)
+// (done) Press the search button (User Interaction) -  next button is rendered (What is rendered to the DOM)
 
 // bellow is test cases of Players.vue
 // Press the search button (User Interaction) -  Player names, positions and teams are displayed in a list format (What is rendered to the DOM)

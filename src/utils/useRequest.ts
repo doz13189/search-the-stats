@@ -38,11 +38,4 @@ export class UseRequest {
     return this._error
   }
 
-
-  // return {
-  //   result,
-  //   loading,
-  //   error,
-  //   createRequest
-  // }
 }

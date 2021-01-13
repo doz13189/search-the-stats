@@ -1,5 +1,27 @@
 <template>
+
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Go Wizards
+        </h1>
+        <h2 class="subtitle">
+          Search the stats of NBA players
+        </h2>
+      </div>
+    </div>
+  </section>
+
   <router-view />
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        Created by <a href="https://github.com/doz13189/rui-vue3">doz13189</a>
+      </p>
+    </div>
+  </footer>
 </template>
 
 <script lang="ts">
