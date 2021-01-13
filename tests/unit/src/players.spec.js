@@ -4,7 +4,7 @@ import flushPromises from 'flush-promises'
 
 import Search from "@/views/Search.vue";
 
-import { firstResponse200, secondResponse200, thirddResponse200 } from './response.js'
+import { firstResponse200, secondResponse200, thirddResponse200, forthResponse200 } from './response.js'
 jest.mock('axios')
 
 // number : event(input) - result(output)
@@ -123,9 +123,42 @@ describe("Search.vue", () => {
     // the previous button is not avalable after returning thirdResponse200. so disable attribute match with ''.
     expect(wrapper.find('[data-testid="previous-button"]').attributes().disabled).toMatch('')
 
-    // The values of current_page and total_page are set to 1 and 2, respectively.
+    // The values of current_page and total_page are set to 1 and 3, respectively.
     expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p data-testid="current-page-paragraph">current_page : 1</p>')
-    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p data-testid="total-page-paragraph">total page : 2</p>')
+    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p data-testid="total-page-paragraph">total page : 3</p>')
+  })
+
+  it('Press the search button (User Interaction) -  next button is rendered (What is rendered to the DOM)', async () => {
+    // dont use firstResponse200. use 300response from beginning. The values of total_page and current_page are different from 200response
+    axios.get.mockResolvedValueOnce(secondResponse200)
+    // return forthResponse200 after pressing the next button
+    axios.get.mockResolvedValueOnce(forthResponse200)
+
+    const wrapper = shallowMount(Search)
+    const searchInput = wrapper.find('[data-testid="search-input"]')  
+    searchInput.setValue('test')
+    wrapper.vm.$nextTick()
+    await flushPromises()
+  
+    // Execute the search logic at first time
+    wrapper.find('[data-testid="search-button"]').trigger('click')
+    wrapper.vm.$nextTick()
+    await flushPromises()
+
+    // the next button is avalable after returning secondResponse200. so disable attribute is undefined.
+    expect(wrapper.find('[data-testid="next-button"]').attributes().disabled).toBeUndefined()
+
+    // Execute the search logic at second time
+    wrapper.find('[data-testid="next-button"]').trigger('click')
+    wrapper.vm.$nextTick()
+    await flushPromises()
+
+    // the next button is not avalable after returning thirdResponse200. so disable attribute match with ''.
+    expect(wrapper.find('[data-testid="next-button"]').attributes().disabled).toMatch('')
+
+    // The values of current_page and total_page are set to 3 and 3, respectively.
+    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p data-testid="current-page-paragraph">current_page : 3</p>')
+    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p data-testid="total-page-paragraph">total page : 3</p>')
   })
 
 })
