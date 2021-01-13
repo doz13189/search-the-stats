@@ -16,6 +16,8 @@ jest.mock('axios')
 // (done) Press the search button (User Interaction) -  "total page" is rendered (What is rendered to the DOM)
 // (done) Press the search button (User Interaction) -  previous button is rendered (What is rendered to the DOM)
 // Press the search button (User Interaction) -  next button is rendered (What is rendered to the DOM)
+
+// bellow is test cases of Players.vue
 // Press the search button (User Interaction) -  Player names, positions and teams are displayed in a list format (What is rendered to the DOM)
 // Press the previous button (User Interaction) - The previous page is displayed (What is rendered to the DOM)
 // Press the next button (User Interaction) - The next page is displayed (What is rendered to the DOM)
