@@ -11,6 +11,7 @@
     <p>error : {{ lastSeasonAverages.error.value }}</p>
   </div>
 
+
   <div class="container" v-if="thisSeasonAverages.result.value.data && lastSeasonAverages.result.value.data">
 
     <div class="columns">
@@ -28,7 +29,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">games_played</p>
+        <p class="heading">Games Played</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].games_played }}</p>
@@ -40,7 +41,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">min</p>
+        <p class="heading">Min</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].min }}</p>
@@ -52,7 +53,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">fgm</p>
+        <p class="heading">Field Goals Made</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fgm }}</p>
@@ -68,7 +69,7 @@
     <div class="columns">
       
       <div class="column box m-1">
-        <p class="heading">fga</p>
+        <p class="heading">Field Goals Attempted</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fga }}</p>
@@ -80,7 +81,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">fg3m</p>
+        <p class="heading">Three-Point Field Foals Made</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg3m }}</p>
@@ -92,7 +93,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">fg3a</p>
+        <p class="heading">Three-Point Field Foals Attempted</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg3a }}</p>
@@ -104,7 +105,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">ftm</p>
+        <p class="heading">Free Throws Made</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].ftm }}</p>
@@ -121,7 +122,7 @@
     <div class="columns">
       
       <div class="column box m-1">
-        <p class="heading">fta</p>
+        <p class="heading">Average Free Throws Attempted</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fta }}</p>
@@ -133,7 +134,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">oreb</p>
+        <p class="heading">Offensive Rebounds</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].oreb }}</p>
@@ -145,7 +146,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">dreb</p>
+        <p class="heading">Defensive Rebounds</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].dreb }}</p>
@@ -157,7 +158,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">reb</p>
+        <p class="heading">Rebounds</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].reb }}</p>
@@ -173,7 +174,7 @@
     <div class="columns">
       
       <div class="column box m-1">
-        <p class="heading">ast</p>
+        <p class="heading">Assists</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].ast }}</p>
@@ -185,7 +186,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">stl</p>
+        <p class="heading">Steals</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].stl }}</p>
@@ -197,7 +198,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">blk</p>
+        <p class="heading">Blocks</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].blk }}</p>
@@ -209,7 +210,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">turnover</p>
+        <p class="heading">Turnover</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].turnover }}</p>
@@ -225,7 +226,7 @@
     <div class="columns">
       
       <div class="column box m-1">
-        <p class="heading">pf</p>
+        <p class="heading">Personal Fouls</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].pf }}</p>
@@ -237,7 +238,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">pts</p>
+        <p class="heading">Points</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].pts }}</p>
@@ -249,7 +250,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">fg_pct</p>
+        <p class="heading">Field Goals Percentage</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg_pct }}</p>
@@ -261,7 +262,7 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">fg3_pct</p>
+        <p class="heading">Three-Point Field Goals Percentage</p>
         <div class="columns is-mobile">
           <div class="column">
             <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg3_pct }}</p>
@@ -278,13 +279,13 @@
     <div class="columns">
       
       <div class="column box m-1">
-        <p class="heading">pf</p>
+        <p class="heading">Free Throws Percentage</p>
         <div class="columns is-mobile">
           <div class="column">
-            <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].pf }}</p>
+            <p class="title has-text-danger">{{ thisSeasonAverages.result.value.data[0].ft_pct }}</p>
           </div>
           <div class="column">
-            <p class="title has-text-info">{{ lastSeasonAverages.result.value.data[0].pf }}</p>
+            <p class="title has-text-info">{{ lastSeasonAverages.result.value.data[0].ft_pct }}</p>
           </div>
         </div>
       </div>
