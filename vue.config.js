@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: './',
+  publicPath: '/rui-vue3/',
   outputDir: './docs'
 }
 
