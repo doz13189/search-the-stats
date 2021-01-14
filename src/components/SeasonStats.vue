@@ -11,13 +11,65 @@
     <div class="table-container">
       <table class="table is-bordered" align="center">
         <thead>
-          <!-- <tr v-for="stat in stats.result.value.data[0]"
+          <tr>
+            <th>date</th>
+            <th>vs team</th>
+            <th>ast</th>
+            <th>blk</th>
+            <th>dreb</th>
+            <th>fg3_pct</th>
+            <th>fg3a</th>
+            <th>fg3m</th>
+            <th>fg_pct</th>
+            <th>fga</th>
+            <th>fgm</th>
+            <th>min</th>
+            <th>oreb</th>
+            <th>pf</th>
+            <th>pts</th>
+            <th>reb</th>
+            <th>stl</th>
+            <th>turnover</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="stat in stats.result.value.data"
               :key="stat.id"
               >
-            <th v-for="s in Object.entries(stat)" :key="s">
-              {{ s[0] }}
-            </th>
-          </tr> -->
+            <td>{{ stat.game.date }}</td>
+            <td>{{ stat.team.id === stat.game.home_team_id ? stat.game.visitor_team_id : stat.game.home_team_id }}</td>
+            <td>{{ stat.ast }}</td>
+            <td>{{ stat.blk }}</td>
+            <td>{{ stat.dreb }}</td>
+            <td>{{ stat.fg3_pct }}</td>
+            <td>{{ stat.fg3a }}</td>
+            <td>{{ stat.fg3m }}</td>
+            <td>{{ stat.fg_pct }}</td>
+            <td>{{ stat.fga }}</td>
+            <td>{{ stat.fgm }}</td>
+            <td>{{ stat.min }}</td>
+            <td>{{ stat.oreb }}</td>
+            <td>{{ stat.pf }}</td>
+            <td>{{ stat.pts }}</td>
+            <td>{{ stat.reb }}</td>
+            <td>{{ stat.stl }}</td>
+            <td>{{ stat.turnover }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 
+  <div v-if="stats.result.value.data">
+
+    <div class="table-container">
+      <table class="table is-bordered" align="center">
+        <thead>
+          <tr>
+            <th>{{ stats.result.value.data[0].game.date }}</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -31,8 +83,12 @@
         </tbody>
       </table>
     </div>
-
   </div>
+  -->
+
+  <div class="block"></div>
+  <div class="block"></div>
+
 </template>
 
 <script lang="ts">
