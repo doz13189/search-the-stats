@@ -8,6 +8,15 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+      (function(){
+          var redirect = sessionStorage.redirect;
+          delete sessionStorage.redirect;
+          if (redirect && redirect != location.href) {
+              history.replaceState(null, null, redirect);
+          }
+      })();
+    </script>
   </head>
   <body>
     <noscript>
