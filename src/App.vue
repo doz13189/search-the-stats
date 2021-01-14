@@ -1,4 +1,5 @@
 <template>
+  <!-- 
   <section class="hero is-medium is-primary is-bold">
     <div class="hero-body">
       <div class="container">
@@ -8,9 +9,11 @@
       </div>
     </div>
   </section>
+  -->
 
   <router-view />
-
+  
+  <!-- 
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
@@ -18,6 +21,7 @@
       </p>
     </div>
   </footer>
+   -->
 </template>
 
 <script lang="ts">

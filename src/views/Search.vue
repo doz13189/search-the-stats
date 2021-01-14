@@ -1,7 +1,6 @@
 <template>
-
   <div class="block">
-    <!-- Please enter <strong>the player name</strong>. -->
+              Search the stats of NBA players
   </div>
 
   <div class="columns is-mobile is-centered">
@@ -24,23 +23,22 @@
 
   <div v-if="players.result.value.data">
 
-    <nav class="level is-mobile">
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Current Page</p>
-          <p class="title" data-testid="current-page-paragraph">{{ players.result.value.meta?.current_page }}</p>
-        </div>
+    <div class="columns is-gapless">
+      <div class="column"></div>
+      <div class="column">
+        <p class="heading">Current Page</p>
+        <p class="title" data-testid="current-page-paragraph">{{ players.result.value.meta?.current_page }}</p>
       </div>
-      <div class="level-item has-text-centered">
-        <div>
-          <p class="heading">Total Page</p>
-          <p class="title" data-testid="total-page-paragraph">{{ players.result.value.meta?.total_pages }}</p>
-        </div>
+      <div class="column">
+        <p class="heading">Total Page</p>
+        <p class="title" data-testid="total-page-paragraph">{{ players.result.value.meta?.total_pages }}</p>
       </div>
-    </nav>
+      <div class="column"></div>
+    </div>
 
-    <nav class="level is-mobile">
-      <div class="level-item has-text-centered">
+    <div class="columns is-gapless">
+      <div class="column"></div>
+      <div class="column">
         <button
           class="button is-rounded"
           @click="page--"
@@ -49,7 +47,7 @@
           previous
         </button>
       </div>
-      <div class="level-item has-text-centered">
+      <div class="column">
         <button
           class="button is-rounded"
           @click="page++"
@@ -58,7 +56,8 @@
           next
         </button>
       </div>
-    </nav>
+      <div class="column"></div>
+    </div>
 
     <Players :players="players"/>
   </div>
