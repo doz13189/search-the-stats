@@ -1,8 +1,14 @@
 <template>
   <div class="block">
-    <p>loading : {{ stats.loading.value }}</p>
-    <p>error : {{ stats.error.value }}</p>
   </div>
+
+  <div class="block">
+    <!-- <p>loading : {{ stats.loading.value }}</p> -->
+    <!-- <p>error : {{ stats.error.value }}</p> -->
+    <ProgressBar v-if="stats.loading.value" />
+    <Error v-if="stats.error.value"/>
+  </div>
+
 
   <!-- <p>{{ stats.result.value.meta }}</p> -->
 
@@ -61,31 +67,6 @@
     </div>
   </div>
 
-  <!-- 
-  <div v-if="stats.result.value.data">
-
-    <div class="table-container">
-      <table class="table is-bordered" align="center">
-        <thead>
-          <tr>
-            <th>{{ stats.result.value.data[0].game.date }}</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr v-for="stat in stats.result.value.data"
-              :key="stat.id"
-              >
-            <td v-for="s in Object.entries(stat)" :key="s">
-              {{ s }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  -->
-
   <div class="block"></div>
   <div class="block"></div>
 
@@ -96,7 +77,14 @@ import { defineComponent } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
 
+import ProgressBar from "@/components/ProgressBar.vue";
+import Error from "@/components/Error.vue";
+
 export default defineComponent({
+  components: {
+    ProgressBar,
+    Error
+  },
   props: {
     playerId: String,
     season: Number

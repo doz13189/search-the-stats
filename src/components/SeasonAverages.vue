@@ -1,16 +1,13 @@
 <template>
-  <div class="block">
-    <p>season averages {{ season }}- {{ season - 1 }}</p>
-    <p>loading : {{ thisSeasonAverages.loading.value }}</p>
-    <p>error : {{ thisSeasonAverages.error.value }}</p>
-  </div>
 
   <div class="block">
-    <p>season averages {{ season - 1 }}- {{ season - 2 }}</p>
-    <p>loading : {{ lastSeasonAverages.loading.value }}</p>
-    <p>error : {{ lastSeasonAverages.error.value }}</p>
+    <!-- <p>loading : {{ thisSeasonAverages.loading.value }}</p> -->
+    <!-- <p>error : {{ thisSeasonAverages.error.value }}</p> -->
+    <!-- <p>loading : {{ lastSeasonAverages.loading.value }}</p> -->
+    <!-- <p>error : {{ lastSeasonAverages.error.value }}</p> -->
+    <ProgressBar v-if="thisSeasonAverages.loading.value && lastSeasonAverages.loading.value" />
+    <Error v-if="thisSeasonAverages.error.value && lastSeasonAverages.error.value"/>
   </div>
-
 
   <div class="container" v-if="thisSeasonAverages.result.value.data && lastSeasonAverages.result.value.data">
 
@@ -300,37 +297,6 @@
 
   </div>
 
-
-  <!-- 
-  <div v-if="thisSeasonAverages.result.value.data && lastSeasonAverages.result.value.data">
-    <div class="table-container">
-      <table class="table is-bordered" align="center">
-        <thead>
-          <th v-for="stat in Object.entries(thisSeasonAverages.result.value.data[0])" :key="stat.id">
-            {{ stat[0] }}
-          </th>
-        </thead>
-
-        <tbody>
-          
-          <tr>
-            <td v-for="stat in Object.entries(thisSeasonAverages.result.value.data[0])" :key="stat.id">
-              {{ stat[1] }}
-            </td>
-          </tr>
-
-          <tr>
-            <td v-for="stat in Object.entries(lastSeasonAverages.result.value.data[0])" :key="stat.id">
-              {{ stat[1] }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  -->
-
-
 </template>
 
 <script lang="ts">
@@ -338,7 +304,14 @@ import { defineComponent } from 'vue';
 import { getSeasonAverages } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
 
+import ProgressBar from "@/components/ProgressBar.vue";
+import Error from "@/components/Error.vue";
+
 export default defineComponent({
+  components: {
+    ProgressBar,
+    Error
+  },
   props: {
     playerId: String,
     season: Number

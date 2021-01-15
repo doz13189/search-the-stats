@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-              Search the stats of NBA players
+    Search the stats of NBA players
   </div>
 
   <div class="columns is-mobile is-centered">
@@ -17,8 +17,10 @@
   </div>
   
   <div class="block">
-    <p>loading : {{ players.loading.value }}</p>
-    <p>error : {{ players.error.value }}</p>
+    <!-- <p>loading : {{ players.loading.value }}</p> -->
+    <!-- <p>error : {{ players.error.value }}</p> -->
+    <ProgressBar v-if="players.loading.value" />
+    <Error v-if="players.error.value"/>
   </div>
 
   <div v-if="players.result.value.data">
@@ -70,10 +72,15 @@ import { UseRequest } from '../utils/useRequest'
 import { getAllPlayers } from '../api/api'
 
 import Players from "@/components/Players.vue";
+import ProgressBar from "@/components/ProgressBar.vue";
+import Error from "@/components/Error.vue";
+
 
 export default defineComponent({
   components: {
-    Players
+    Players,
+    ProgressBar,
+    Error
   },
   setup() {
     type getAllPlayersParamType = {

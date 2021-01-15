@@ -1,8 +1,10 @@
 <template>
 
   <div class="block">
-    <p>loading : {{ specificPlayer.loading.value }}</p>
-    <p>error : {{ specificPlayer.error.value }}</p>
+    <!-- <p>loading : {{ players.loading.value }}</p> -->
+    <!-- <p>error : {{ players.error.value }}</p> -->
+    <ProgressBar v-if="specificPlayer.loading.value" />
+    <Error v-if="specificPlayer.error.value"/>
   </div>
 
   <div v-if="specificPlayer.result.value">
@@ -21,16 +23,12 @@
           <td>{{ specificPlayer.result.value.position }}</td>
         </tr>
         <tr>
-          <th>height_feet</th>
-          <td>{{ specificPlayer.result.value.height_feet }}</td>
+          <th>height</th>
+          <td>{{ specificPlayer.result.value.height_feet }}' {{ specificPlayer.result.value.height_inches }}"</td>
         </tr>
         <tr>
-          <th>height_inches</th>
-          <td>{{ specificPlayer.result.value.height_inches }}</td>
-        </tr>
-        <tr>
-          <th>weight_pounds</th>
-          <td>{{ specificPlayer.result.value.weight_pounds }}</td>
+          <th>weight</th>
+          <td>{{ specificPlayer.result.value.weight_pounds }} lbs</td>
         </tr>
         <tr>
           <th>team</th>
@@ -65,7 +63,14 @@ import { defineComponent } from 'vue';
 import { getSpecificPlayer } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
 
+import ProgressBar from "@/components/ProgressBar.vue";
+import Error from "@/components/Error.vue";
+
 export default defineComponent({
+  components: {
+    ProgressBar,
+    Error
+  },
   props: {
     playerId: String
   },
