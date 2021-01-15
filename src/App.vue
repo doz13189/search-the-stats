@@ -10,7 +10,7 @@
     </div>
   </section>
   -->
-  <p>Yo !</p>
+
   <router-view />
   
   <!-- 
