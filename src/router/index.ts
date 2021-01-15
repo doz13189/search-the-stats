@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 
 import Search from '@/views/Search.vue';
 import Stats from '@/views/Stats.vue';
-import NotFound from '@/views/NotFound.vue';
+// import NotFound from '@/views/NotFound.vue';
 
 const routes = [
   {
@@ -16,11 +16,11 @@ const routes = [
     name: 'Stats',
     props: true
   },
-  {
-    path: '/:catchAll(.*)',
-    name: 'NotFound',
-    component: NotFound,
-  },
+  // {
+  //   path: '/:catchAll(.*)',
+  //   name: 'NotFound',
+  //   component: NotFound,
+  // },
 ];
 
 const router = createRouter({
