@@ -5,8 +5,8 @@
   <div class="block">
     <!-- <p>loading : {{ stats.loading.value }}</p> -->
     <!-- <p>error : {{ stats.error.value }}</p> -->
-    <ProgressBar v-if="stats.loading.value" />
-    <Error v-if="stats.error.value"/>
+    <ProgressBar :loading="stats.loading.value" />
+    <Error :error="stats.error.value"/>
   </div>
 
 

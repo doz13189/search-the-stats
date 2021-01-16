@@ -19,8 +19,8 @@
   <div class="block">
     <!-- <p>loading : {{ players.loading.value }}</p> -->
     <!-- <p>error : {{ players.error.value }}</p> -->
-    <ProgressBar v-if="players.loading.value" />
-    <Error v-if="players.error.value"/>
+    <ProgressBar :loading="players.loading.value" />
+    <Error :error="players.error.value"/>
   </div>
 
   <div v-if="players.result.value.data">

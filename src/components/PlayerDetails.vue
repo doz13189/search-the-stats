@@ -3,8 +3,8 @@
   <div class="block">
     <!-- <p>loading : {{ players.loading.value }}</p> -->
     <!-- <p>error : {{ players.error.value }}</p> -->
-    <ProgressBar v-if="specificPlayer.loading.value" />
-    <Error v-if="specificPlayer.error.value"/>
+    <ProgressBar :loading="specificPlayer.loading.value" />
+    <Error :error="specificPlayer.error.value"/>
   </div>
 
   <div v-if="specificPlayer.result.value">
