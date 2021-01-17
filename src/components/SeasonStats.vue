@@ -18,24 +18,24 @@
       <table class="table is-bordered" align="center">
         <thead>
           <tr>
-            <th>date</th>
-            <th>vs team</th>
-            <th>min</th>
-            <th>pts</th>
-            <th>fgm</th>
-            <th>fga</th>
-            <th>fg_pct</th>
-            <th>fg3m</th>
-            <th>fg3a</th>
-            <th>fg3_pct</th>
-            <th>oreb</th>
-            <th>dreb</th>
-            <th>reb</th>
-            <th>ast</th>
-            <th>blk</th>
-            <th>stl</th>
-            <th>pf</th>
-            <th>turnover</th>
+            <th>DATE</th>
+            <th>TEAM ID</th>
+            <th>MIN</th>
+            <th>PTS</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>FG%</th>
+            <th>FG3M</th>
+            <th>FG3A</th>
+            <th>FG3%</th>
+            <th>OREB</th>
+            <th>DREB</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>BLK</th>
+            <th>STL</th>
+            <th>PF</th>
+            <th>TO</th>
 
           </tr>
         </thead>

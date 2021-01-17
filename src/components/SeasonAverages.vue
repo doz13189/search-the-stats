@@ -167,19 +167,6 @@
       </div>
 
       <div class="column box m-1">
-        <p class="heading">ft%</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].ft_pct }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].ft_pct }}</p>
-          </div>
-        </div>
-        <p class="heading">Free Throws Percentage</p>
-      </div>
-
-      <div class="column box m-1">
         <p class="heading">fta</p>
         <div class="columns is-mobile">
           <div class="column">
@@ -190,6 +177,19 @@
           </div>
         </div>
         <p class="heading">Average Free Throws Attempted</p>
+      </div>
+
+      <div class="column box m-1">
+        <p class="heading">ft%</p>
+        <div class="columns is-mobile">
+          <div class="column">
+            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].ft_pct }}</p>
+          </div>
+          <div class="column">
+            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].ft_pct }}</p>
+          </div>
+        </div>
+        <p class="heading">Free Throws Percentage</p>
       </div>
 
       <div class="column box m-1">
