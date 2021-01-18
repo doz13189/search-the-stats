@@ -31,4 +31,17 @@ Parent.vue のユニットテストでは、スタブを使っているため、
 
 `props` として子コンポーネントに値を渡すことで、Error.vue の単体テストを Error.vue のみで実行することができる。
 
+# intro to vue 3
+## Conditional Rendering
+
+`v-if` は、DOM ツリーからの追加・削除を意味するが、`v-show` は Element の表示・非表示を意味する。
+
+```html
+<p v-show="inStock">In Stock</p>
+```
+
+```html
+<p style="display: none;">In Stock</p>
+```
+
 
