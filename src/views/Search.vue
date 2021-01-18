@@ -1,6 +1,8 @@
 <template>
   <div class="block">
-    Search the stats of NBA players
+    <p>
+      {{ searchTextParagraph }}
+    </p>
   </div>
 
   <div class="columns is-mobile is-centered">
@@ -83,6 +85,7 @@ export default defineComponent({
     Error
   },
   setup() {
+
     type getAllPlayersParamType = {
       search?: string,
       page?: number,
@@ -105,7 +108,14 @@ export default defineComponent({
 
     watch(page, () => search(page.value))
     
+    const searchTextParagraph = ref<string>('Search the stats of NBA players')
+    watch(searchText, () => {
+      if (searchText.value) { searchTextParagraph.value = 'Which player do you want to know about ?' }
+      else { searchTextParagraph.value = 'Search the stats of NBA players' }
+    })
+
     return {
+      searchTextParagraph,
       searchText,
       page,
       search,
