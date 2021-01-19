@@ -1,6 +1,8 @@
 <template>
   <div class="block">
-    <p>
+    <!-- <p :style="{ backgroundColor: false ? 'red' : 'blue' }"> -->
+    <!-- <p :class="false ? 'has-text-primary' : 'has-text-link' "> -->
+    <p class="has-text-link">
       {{ searchTextParagraph }}
     </p>
   </div>
@@ -8,7 +10,14 @@
   <div class="columns is-mobile is-centered">
     <div class="field has-addons">
       <div class="control">
-        <input class="input is-rounded" type="text" v-model="searchText" data-testid="search-input">
+        <input
+          class="input is-rounded"
+          type="text"
+          v-model="searchText"
+          v-on:focus="focus"
+          v-on:blur="blur"
+          data-testid="search-input"
+          >
       </div>
       <div class="control">
         <button class="button is-rounded is-primary" @click="search()" :disabled="!searchText" data-testid="search-button">
@@ -109,17 +118,17 @@ export default defineComponent({
     watch(page, () => search(page.value))
     
     const searchTextParagraph = ref<string>('Search the stats of NBA players')
-    watch(searchText, () => {
-      if (searchText.value) { searchTextParagraph.value = 'Which player do you want to know about ?' }
-      else { searchTextParagraph.value = 'Search the stats of NBA players' }
-    })
+    const focus = () => searchTextParagraph.value = 'Which player do you want to know about ?'
+    const blur = () => searchTextParagraph.value = 'Search the stats of NBA players'
 
     return {
       searchTextParagraph,
       searchText,
       page,
       search,
-      players
+      players,
+      focus,
+      blur
     }
   }
 });
