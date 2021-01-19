@@ -116,10 +116,12 @@ export default defineComponent({
     }
 
     watch(page, () => search(page.value))
-    
-    const searchTextParagraph = ref<string>('Search the stats of NBA players')
-    const focus = () => searchTextParagraph.value = 'Which player do you want to know about ?'
-    const blur = () => searchTextParagraph.value = 'Search the stats of NBA players'
+
+    const blurTitle = 'Search the stats of NBA players'
+    const focusTitle = 'Which player do you want to know about ?'
+    const searchTextParagraph = ref<string>(blurTitle)
+    const focus = () => searchTextParagraph.value = focusTitle
+    const blur = () => searchTextParagraph.value = blurTitle
 
     return {
       searchTextParagraph,
