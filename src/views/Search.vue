@@ -2,7 +2,7 @@
   <div class="block">
     <!-- <p :style="{ backgroundColor: false ? 'red' : 'blue' }"> -->
     <!-- <p :class="false ? 'has-text-primary' : 'has-text-link' "> -->
-    <p class="has-text-link">
+    <p class="has-text-black">
       {{ searchTextParagraph }}
     </p>
   </div>
