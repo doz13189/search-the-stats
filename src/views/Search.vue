@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="block">
     <!-- <p>loading : {{ players.loading.value }}</p> -->
     <!-- <p>error : {{ players.error.value }}</p> -->
@@ -81,6 +81,7 @@
 import { defineComponent, ref, watch } from 'vue';
 import { UseRequest } from '../utils/useRequest'
 import { getAllPlayers } from '../api/api'
+import { Team } from '@/enums/team'
 
 import Players from "@/components/Players.vue";
 import ProgressBar from "@/components/ProgressBar.vue";

@@ -19,7 +19,7 @@
         <thead>
           <tr>
             <th>DATE</th>
-            <th>TEAM ID</th>
+            <th>TEAM</th>
             <th>MIN</th>
             <th>PTS</th>
             <th>FGM</th>
@@ -45,7 +45,7 @@
               :key="stat.id"
               >
             <td>{{ stat.game.date }}</td>
-            <td>{{ stat.team.id === stat.game.home_team_id ? stat.game.visitor_team_id : stat.game.home_team_id }}</td>
+            <td>{{ stat.team.id === stat.game.home_team_id ? Team[stat.game.visitor_team_id] : Team[stat.game.home_team_id] }}</td>
             <td>{{ stat.min }}</td>
             <td>{{ stat.pts }}</td>
             <td>{{ stat.fgm }}</td>
@@ -77,6 +77,7 @@
 import { defineComponent } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
+import { Team } from '@/enums/team'
 
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
@@ -116,12 +117,13 @@ export default defineComponent({
       })
     }).then(() => {
       stats.result.value.data = stats.result.value.data.filter((v: any, index: any) => {
-        return index < 5
+        return index < 10
       })
     })
 
     return {
-      stats
+      stats,
+      Team
     }
   }
 });
