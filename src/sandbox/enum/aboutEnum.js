@@ -4,12 +4,28 @@ var People;
     People[People["b"] = 1] = "b";
     People[People["c"] = 2] = "c";
 })(People || (People = {}));
-var People2;
-(function (People2) {
-    People2[People2["a"] = 1] = "a";
-    People2[People2["b"] = 2] = "b";
-    People2[People2["c"] = 3] = "c";
-})(People2 || (People2 = {}));
-var People3;
-(function (People3) {
-})(People3 || (People3 = {}));
+console.log(People);
+console.log(People.a);
+console.log(People[0]);
+// enum Month {
+//   January = 1,
+//   February = 2,
+//   March = 3,
+//   April = 4,
+//   May = 5,
+//   June = 6,
+//   July = 7,
+//   August = 8,
+//   September = 9,
+//   October = 10,
+//   November = 11,
+//   December = 12
+// }
+// console.log(Month.May)
+// console.log(Month[5])
+// enum People2 {
+//   a = 1,
+//   b,
+//   c
+// }
+// enum People3 {}
