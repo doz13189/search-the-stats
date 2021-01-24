@@ -81,7 +81,6 @@
 import { defineComponent, ref, watch } from 'vue';
 import { UseRequest } from '../utils/useRequest'
 import { getAllPlayers } from '../api/api'
-import { Team } from '@/enums/team'
 
 import Players from "@/components/Players.vue";
 import ProgressBar from "@/components/ProgressBar.vue";

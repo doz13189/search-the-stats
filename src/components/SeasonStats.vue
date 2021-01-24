@@ -45,7 +45,7 @@
               :key="stat.id"
               >
             <td>{{ stat.game.date }}</td>
-            <td>{{ stat.team.id === stat.game.home_team_id ? Team[stat.game.visitor_team_id] : Team[stat.game.home_team_id] }}</td>
+            <td>{{ stat.team.id === stat.game.home_team_id ? team[stat.game.visitor_team_id] : team[stat.game.home_team_id] }}</td>
             <td>{{ stat.min }}</td>
             <td>{{ stat.pts }}</td>
             <td>{{ stat.fgm }}</td>
@@ -77,7 +77,7 @@
 import { defineComponent } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
-import { Team } from '@/enums/team'
+import { team } from '@/enums/team'
 
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
@@ -123,7 +123,7 @@ export default defineComponent({
 
     return {
       stats,
-      Team
+      team
     }
   }
 });
