@@ -30,7 +30,10 @@ export const team =  {
   29 : "Utah Jazz",
   30 : "Washington Wizards"
 } as const
-// type TeamType = typeof team[keyof typeof team];
+
+export type TeamType = keyof typeof team;
+// export type TeamType = typeof team[keyof typeof team];
+
 
 // export enum Team {
 //   "Atlanta Hawks" = 1,
