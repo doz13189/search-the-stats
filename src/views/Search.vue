@@ -79,8 +79,9 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue';
-import { UseRequest } from '../utils/useRequest'
-import { getAllPlayers } from '../api/api'
+import { UseRequest } from '@/utils/useRequest'
+import { getAllPlayers } from '@/api/api'
+import { getAllPlayersParamType } from '@/types/api'
 
 import Players from "@/components/Players.vue";
 import ProgressBar from "@/components/ProgressBar.vue";
@@ -94,12 +95,6 @@ export default defineComponent({
     Error
   },
   setup() {
-
-    type getAllPlayersParamType = {
-      search?: string,
-      page?: number,
-      per_page?: number
-    }
 
     const searchText = ref<string>('')
     const page = ref<number>(1)

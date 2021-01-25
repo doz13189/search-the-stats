@@ -310,8 +310,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getSeasonAverages } from '../api/api'
-import { UseRequest } from '../utils/useRequest'
+import { getSeasonAverages } from '@/api/api'
+import { UseRequest } from '@/utils/useRequest'
+import { getSeasonAveragesParamType } from '@/types/api'
 
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
@@ -326,10 +327,6 @@ export default defineComponent({
     season: Number
   },
   setup(props) {
-    type getSeasonAveragesParamType = {
-      season: number,
-      'player_ids[]': string
-    }
 
     const thisSeasonAverages = new UseRequest(getSeasonAverages)
     thisSeasonAverages.createRequest<getSeasonAveragesParamType>({

@@ -60,8 +60,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getSpecificPlayer } from '../api/api'
-import { UseRequest } from '../utils/useRequest'
+import { getSpecificPlayer } from '@/api/api'
+import { UseRequest } from '@/utils/useRequest'
+import { getSpecificPlayerParamType } from '@/types/api'
 
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
@@ -76,9 +77,6 @@ export default defineComponent({
   },
   setup(props) {
 
-    type getSpecificPlayerParamType = {
-      id: string
-    }
     const specificPlayer = new UseRequest(getSpecificPlayer)
     specificPlayer.createRequest<getSpecificPlayerParamType>({
       id: props.playerId!

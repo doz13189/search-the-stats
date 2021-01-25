@@ -77,7 +77,8 @@
 import { defineComponent } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
-import { team } from '@/enums/team'
+import { team } from '@/types/team'
+import { getAllStatsParamType } from '@/types/api'
 
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
@@ -92,17 +93,6 @@ export default defineComponent({
     season: Number
   },
   setup(props) {
-    type getAllStatsParamType = {
-      page?: number,
-      per_page?: number,
-      dates?: string,
-      'seasons[]'?: number,
-      'player_ids[]'?: string,
-      game_ids?: number,
-      postseason?: boolean,
-      start_date?: string,
-      end_date?: string
-    }
 
     const stats = new UseRequest(getAllStats)
     // annotation is not work !! you have to check annotaion work when object passed as args
