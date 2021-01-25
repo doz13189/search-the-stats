@@ -9,7 +9,6 @@
     <Error :error="stats.error.value"/>
   </div>
 
-
   <!-- <p>{{ stats.result.value.meta }}</p> -->
 
   <div v-if="stats.result.value.data">
@@ -45,7 +44,7 @@
               :key="stat.id"
               >
             <td>{{ stat.game.date }}</td>
-            <td>{{ stat.team.id === stat.game.home_team_id ? team[stat.game.visitor_team_id] : team[stat.game.home_team_id] }}</td>
+            <td>{{ getTeamName( stat.team.id, stat.game.home_team_score, stat.game.visitor_team_id ) }}</td>
             <td>{{ stat.min }}</td>
             <td>{{ stat.pts }}</td>
             <td>{{ stat.fgm }}</td>
@@ -74,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
 import { team } from '@/types/team'
@@ -106,16 +105,33 @@ export default defineComponent({
         return e1.game.date < e2.game.date ? 1 : -1
       })
     }).then(() => {
-      stats.result.value.data = stats.result.value.data.filter((v: any, index: any) => {
+      stats.result.value.data = stats.result.value.data.filter((v: any, index: number) => {
         return index < 10
       })
     })
 
+    // args is annoted as string type but args will passed as number type. annotetion is not valid
+    // maybe i have to annote the request response.
+    const getTeamName = (teamId: string, homeTeamId: string, visitorTeamId: string): string => {
+      // console.log(typeof teamId, typeof homeTeamId, typeof visitorTeamId)
+      console.log(team['1'])
+      return 'a'
+      // return teamId === homeTeamId ? team[visitorTeamId] : team[homeTeamId]
+    }
+
     return {
       stats,
-      team
+      getTeamName
     }
-  }
+  },
+  // methods: {
+  //   getTeamName (teamId: string, homeTeamId: string, visitorTeamId: string): string {
+  //     console.log(typeof teamId, typeof homeTeamId, typeof visitorTeamId)
+  //     console.log(team['1'])
+  //     return 'a'
+  //     // return teamId === homeTeamId ? team[visitorTeamId] : team[homeTeamId]
+  //   }
+  // }
 });
 </script>
 
