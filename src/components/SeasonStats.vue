@@ -43,7 +43,7 @@
           <tr v-for="stat in stats.result.value.data"
               :key="stat.id"
               >
-            <td>{{ stat.game.date }}</td>
+            <td>{{ getDate(stat.game.date) }}</td>
             <td>{{ getTeamName( stat.team.id, stat.game.home_team_id, stat.game.visitor_team_id ) }}</td>
             <td>{{ stat.min }}</td>
             <td>{{ stat.pts }}</td>
@@ -73,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
 import { team } from '@/types/team'
@@ -116,9 +116,14 @@ export default defineComponent({
       return teamId === homeTeamId ? team[visitorTeamId] : team[homeTeamId]
     }
 
+    const getDate = (date: string) => {
+      return new Date(date).toLocaleDateString("en")
+    }
+
     return {
       stats,
-      getTeamName
+      getTeamName,
+      getDate
     }
   },
 });
