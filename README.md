@@ -1,64 +1,34 @@
-:smile: rui-vue3 :smile:
+:basketball: rui-vue3 :basketball:
 ====
 
-Overview
+This project allows you to search for NBA player stats.  
+but there is other purpose.  
+This project will be a template for projects created with Vue3 and Typescript.
 
 ## Description
+
+Specifically, the following technologies are used.
+
+- Composition API  
+I'm using the composition API in the SFC instead of the option API.
+- Typescript  
+Typescript is easier to use in Vue3
+- Jest  
+  SFC's test cases are created by vue-test-utils.  
+  http requests are mocked by jest
+- Vue basic syntax  
+various basic syntax are used.
 
 
 ## URL
 https://rui-vue3.web.app/
 
-## VS. 
-
-## Requirement
-
-## Usage
-
-## Install
-
-## Contribution
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[MIT](https://opensource.org/licenses/mit-license.php)
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[doz13189](https://github.com/doz13189)
 
-
-# 
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
