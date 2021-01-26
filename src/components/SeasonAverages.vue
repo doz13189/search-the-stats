@@ -99,10 +99,10 @@
         <p class="heading">fg%</p>
         <div class="columns is-mobile">
           <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg_pct }}</p>
+            <p class="title is-5 has-text-danger">{{ multiply100(thisSeasonAverages.result.value.data[0].fg_pct) }}</p>
           </div>
           <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fg_pct }}</p>
+            <p class="title is-5 has-text-info">{{ multiply100(lastSeasonAverages.result.value.data[0].fg_pct) }}</p>
           </div>
         </div>
         <p class="heading">Field Goals Percentage</p>
@@ -138,10 +138,10 @@
         <p class="heading">fg3%</p>
         <div class="columns is-mobile">
           <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg3_pct }}</p>
+            <p class="title is-5 has-text-danger">{{ multiply100(thisSeasonAverages.result.value.data[0].fg3_pct) }}</p>
           </div>
           <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fg3_pct }}</p>
+            <p class="title is-5 has-text-info">{{ multiply100(lastSeasonAverages.result.value.data[0].fg3_pct) }}</p>
           </div>
         </div>
         <p class="heading">Three-Point Field Goals Percentage</p>
@@ -183,10 +183,10 @@
         <p class="heading">ft%</p>
         <div class="columns is-mobile">
           <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].ft_pct }}</p>
+            <p class="title is-5 has-text-danger">{{ multiply100(thisSeasonAverages.result.value.data[0].ft_pct) }}</p>
           </div>
           <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].ft_pct }}</p>
+            <p class="title is-5 has-text-info">{{ multiply100(lastSeasonAverages.result.value.data[0].ft_pct) }}</p>
           </div>
         </div>
         <p class="heading">Free Throws Percentage</p>
@@ -344,10 +344,15 @@ export default defineComponent({
       return `${String(season).substring(2, 4)} - ${String(season + 1).substring(2, 4)}`
     }
 
+    const multiply100 = (pct: number): string => {
+      return `${pct * 100}%`
+    }
+
     return {
       thisSeasonAverages,
       lastSeasonAverages,
-      getSeason
+      getSeason,
+      multiply100
     }
   }
 });
