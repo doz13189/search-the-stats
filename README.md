@@ -19,10 +19,29 @@ Typescript is easier to use in Vue3
 - Vue basic syntax  
 various basic syntax are used.
 
+The origin of the project name is Rui Hachimura. Rui Hachimura is NBA Player in Washington Wizards.
 
 ## URL
 https://rui-vue3.web.app/
 
+## Constitution
+
+```
+/src
+  /api <- API modules
+  /assets <- images
+  /components <- Component size SFC file
+  /router <- vue router
+  /sandbox/enum <- sandbox
+  /types <- type definition
+  /utils <- util modules
+  /views <- View size SFC file
+/tests
+  /unit
+    /api <- http request test cases
+    /src <- SFC's test cases
+  /e2e <- Not implemented
+```
 
 ## Licence
 
