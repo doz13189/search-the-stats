@@ -1,4 +1,8 @@
-export const team =  {
+interface TeamIF {
+  [key: number]: string;
+}
+
+export const team : TeamIF =  {
   1 : "Atlanta Hawks",
   2 : "Boston Celtics",
   3 : "Brooklyn Nets",
@@ -31,7 +35,7 @@ export const team =  {
   30 : "Washington Wizards"
 } as const
 
-export type TeamType = keyof typeof team;
+// export type TeamType = keyof typeof team;
 // export type TeamType = typeof team[keyof typeof team];
 
 

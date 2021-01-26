@@ -76,7 +76,7 @@
 import { defineComponent, computed } from 'vue';
 import { getAllStats } from '../api/api'
 import { UseRequest } from '../utils/useRequest'
-import { team, TeamType } from '@/types/team'
+import { team } from '@/types/team'
 import { getAllStatsParamType } from '@/types/api'
 
 import ProgressBar from "@/components/ProgressBar.vue";
@@ -112,25 +112,15 @@ export default defineComponent({
 
     // args is annoted as string type but args will passed as number type. annotetion is not valid
     // maybe i have to annote the request response.
-    // const getTeamName = (teamId: number, homeTeamId: number, visitorTeamId: number): string => {
-      // console.log(typeof teamId, typeof homeTeamId, typeof visitorTeamId)
-      // const a: TeamType = homeTeamId
-      // return teamId === homeTeamId ? team[homeTeamId] : team[1]
-      // return teamId === homeTeamId ? team[visitorTeamId)] : team[homeTeamId]
-    // }
+    const getTeamName = (teamId: number, homeTeamId: number, visitorTeamId: number): string => {
+      return teamId === homeTeamId ? team[visitorTeamId] : team[homeTeamId]
+    }
 
     return {
       stats,
-      // getTeamName
+      getTeamName
     }
   },
-  methods: {
-    getTeamName (teamId: string, homeTeamId: string, visitorTeamId: string): string {
-      // console.log(typeof teamId, typeof homeTeamId, typeof visitorTeamId)
-      // return teamId === homeTeamId ? team[visitorTeamId] : team[homeTeamId]
-      return teamId === homeTeamId ? visitorTeamId : homeTeamId
-    }
-  }
 });
 </script>
 
