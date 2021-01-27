@@ -2,7 +2,7 @@
   <div class="block">
     <!-- <p :style="{ backgroundColor: false ? 'red' : 'blue' }"> -->
     <!-- <p :class="false ? 'has-text-primary' : 'has-text-link' "> -->
-    <p class="has-text-black">
+    <p class="title is-5 has-text-black">
       {{ searchTextParagraph }}
     </p>
   </div>
@@ -36,46 +36,55 @@
 
   <div v-if="players.result.value.data">
 
-    <div class="columns is-gapless">
-      <div class="column"></div>
-      <div class="column">
-        <p class="heading">Current Page</p>
-        <p class="title" data-testid="current-page-paragraph">{{ players.result.value.meta?.current_page }}</p>
+    <div v-if="players.result.value.meta?.total_count">
+
+      <div class="columns is-gapless">
+        <div class="column"></div>
+        <div class="column">
+          <p class="heading">Current Page</p>
+          <p class="title" data-testid="current-page-paragraph">{{ players.result.value.meta?.current_page }}</p>
+        </div>
+        <div class="column">
+          <p class="heading">Total Page</p>
+          <p class="title" data-testid="total-page-paragraph">{{ players.result.value.meta?.total_pages }}</p>
+        </div>
+        <div class="column"></div>
       </div>
-      <div class="column">
-        <p class="heading">Total Page</p>
-        <p class="title" data-testid="total-page-paragraph">{{ players.result.value.meta?.total_pages }}</p>
+
+      <Players :players="players"/>
+
+      <div class="columns is-gapless">
+        <div class="column"></div>
+        <div class="column">
+          <button
+            class="button is-rounded"
+            @click="page--"
+            :disabled="players.result.value.meta?.current_page === 1"
+            data-testid="previous-button">
+            previous
+          </button>
+        </div>
+        <div class="column">
+          <button
+            class="button is-rounded"
+            @click="page++"
+            :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages || players.result.value.meta?.total_pages === 0"
+            data-testid="next-button">
+            next
+          </button>
+        </div>
+        <div class="column"></div>
       </div>
-      <div class="column"></div>
+
     </div>
-
-    <Players :players="players"/>
-
-    <div class="columns is-gapless">
-      <div class="column"></div>
-      <div class="column">
-        <button
-          class="button is-rounded"
-          @click="page--"
-          :disabled="players.result.value.meta?.current_page === 1"
-          data-testid="previous-button">
-          previous
-        </button>
-      </div>
-      <div class="column">
-        <button
-          class="button is-rounded"
-          @click="page++"
-          :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages || players.result.value.meta?.total_pages === 0"
-          data-testid="next-button">
-          next
-        </button>
-      </div>
-      <div class="column"></div>
+    <div v-else>
+      <p class="heading">
+        No match with "{{ previousSearchText }}"
+      </p>
     </div>
 
   </div>
-  
+
   <div class="block"></div>
   <div class="block"></div>
 
@@ -101,6 +110,7 @@ export default defineComponent({
   setup() {
 
     const searchText = ref<string>('')
+    const previousSearchText = ref<string>('')
     const page = ref<number>(1)
     const players = new UseRequest(getAllPlayers)
 
@@ -111,6 +121,9 @@ export default defineComponent({
       })
       .then(() => {
         page = players.result.value.meta.current_page
+      })
+      .then(() => {
+        previousSearchText.value = searchText.value
       })
     }
 
@@ -125,6 +138,7 @@ export default defineComponent({
     return {
       searchTextParagraph,
       searchText,
+      previousSearchText,
       page,
       search,
       players,
