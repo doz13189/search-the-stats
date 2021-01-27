@@ -68,7 +68,7 @@
           <button
             class="button is-rounded"
             @click="page++"
-            :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages || players.result.value.meta?.total_pages === 0"
+            :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages"
             data-testid="next-button">
             next
           </button>
