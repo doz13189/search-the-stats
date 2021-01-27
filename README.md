@@ -30,12 +30,12 @@ https://rui-vue3.web.app/
 /src
   /api <- API modules
   /assets <- images
-  /components <- Component size SFC file
+  /components <- component size SFC file
   /router <- vue router
   /sandbox/enum <- sandbox
   /types <- type definition
   /utils <- util modules
-  /views <- View size SFC file
+  /views <- view size SFC file
 /tests
   /unit
     /api <- http request test cases
