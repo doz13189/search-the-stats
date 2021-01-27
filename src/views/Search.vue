@@ -49,6 +49,8 @@
       <div class="column"></div>
     </div>
 
+    <Players :players="players"/>
+
     <div class="columns is-gapless">
       <div class="column"></div>
       <div class="column">
@@ -64,7 +66,7 @@
         <button
           class="button is-rounded"
           @click="page++"
-          :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages"
+          :disabled="players.result.value.meta?.current_page === players.result.value.meta?.total_pages || players.result.value.meta?.total_pages === 0"
           data-testid="next-button">
           next
         </button>
@@ -72,8 +74,10 @@
       <div class="column"></div>
     </div>
 
-    <Players :players="players"/>
   </div>
+  
+  <div class="block"></div>
+  <div class="block"></div>
 
 </template>
 
