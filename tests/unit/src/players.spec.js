@@ -13,10 +13,11 @@ import {
 jest.mock('axios')
 
 // number : event(input) - result(output)
+// (pass) Focus on <input> (User Interaction) - the title text changes to "Which player do you want to know about ?"
+// (pass) Remove focus from <input> (User Interaction) - the title text changes to "Search the stats of NBA players"
 // (done) Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)
 // (pass) (bad test) Press the search button (User Interaction) - loading status will be true (nothing...)
 // (pass) (bad test) Press the search button (User Interaction) - error status will be true when receiving an error response (nothing...)
-// (done) Press the search button (User Interaction) -  "page" is rendered (What is rendered to the DOM)
 // (done) Press the search button (User Interaction) -  "current_page" is rendered (What is rendered to the DOM)
 // (done) Press the search button (User Interaction) -  "total page" is rendered (What is rendered to the DOM)
 // (done) Press the search button (User Interaction) -  previous button is rendered (What is rendered to the DOM)
@@ -30,6 +31,23 @@ jest.mock('axios')
 
 describe("Search.vue", () => {
   beforeEach(() => {
+  })
+
+  it('Focus on <input> (User Interaction) - the title text changes to "Which player do you want to know about ?"', async () => {
+
+    const wrapper = shallowMount(Search)
+    const searchInput = wrapper.find('[data-testid="search-input"]')
+    console.log(searchInput.element)
+    console.log(document.activeElement)
+
+    expect(wrapper.find('[data-testid="search-text-paragraph"]').html()).toMatch('<p class="title is-5 has-text-black" data-testid="search-text-paragraph">Search the stats of NBA players</p>')
+
+    console.log(wrapper.find('[data-testid="search-text-paragraph"]').html())
+    // wrapper.vm.$nextTick()
+    // await flushPromises()
+
+    // expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
+
   })
 
   it('Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)', async () => {
@@ -47,23 +65,6 @@ describe("Search.vue", () => {
 
   })
 
-  it('Press the search button (User Interaction) -  "page" is rendered (What is rendered to the DOM)', async () => {
-    axios.get.mockResolvedValueOnce(firstResponse200)
-
-    const wrapper = shallowMount(Search)
-    const searchInput = wrapper.find('[data-testid="search-input"]')
-
-    searchInput.setValue('test')
-    wrapper.vm.$nextTick()
-    await flushPromises()
-    
-    wrapper.find('[data-testid="search-button"]').trigger('click')
-    wrapper.vm.$nextTick()
-    await flushPromises()
-
-    expect(wrapper.find('[data-testid="page-paragraph"]').html()).toMatch('<p data-testid="page-paragraph">page : 1</p>')
-  })
-
   it('Press the search button (User Interaction) -  "current_page" is rendered (What is rendered to the DOM)', async () => {
     axios.get.mockResolvedValueOnce(firstResponse200)
 
@@ -79,7 +80,7 @@ describe("Search.vue", () => {
     await flushPromises()
 
     // console.log(wrapper.find('[data-testid="current-page-paragraph"]').html())
-    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p data-testid="current-page-paragraph">current_page : 1</p>')
+    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p class="title" data-testid="current-page-paragraph">1</p>')
   })
 
   it('Press the search button (User Interaction) -  "total page" is rendered (What is rendered to the DOM)', async () => {
@@ -97,7 +98,7 @@ describe("Search.vue", () => {
     await flushPromises()
   
     // console.log(wrapper.find('[data-testid="total-page-paragraph"]').html())
-    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p data-testid="total-page-paragraph">total page : 1</p>')
+    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p class="title" data-testid="total-page-paragraph">1</p>')
   })
 
   it('Press the search button (User Interaction) -  previous button is rendered (What is rendered to the DOM)', async () => {
@@ -129,8 +130,8 @@ describe("Search.vue", () => {
     expect(wrapper.find('[data-testid="previous-button"]').attributes().disabled).toMatch('')
 
     // The values of current_page and total_page are set to 1 and 3, respectively.
-    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p data-testid="current-page-paragraph">current_page : 1</p>')
-    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p data-testid="total-page-paragraph">total page : 3</p>')
+    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p class="title" data-testid="current-page-paragraph">1</p>')
+    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p class="title" data-testid="total-page-paragraph">3</p>')
   })
 
   it('Press the search button (User Interaction) -  next button is rendered (What is rendered to the DOM)', async () => {
@@ -162,8 +163,8 @@ describe("Search.vue", () => {
     expect(wrapper.find('[data-testid="next-button"]').attributes().disabled).toMatch('')
 
     // The values of current_page and total_page are set to 3 and 3, respectively.
-    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p data-testid="current-page-paragraph">current_page : 3</p>')
-    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p data-testid="total-page-paragraph">total page : 3</p>')
+    expect(wrapper.find('[data-testid="current-page-paragraph"]').html()).toMatch('<p class="title" data-testid="current-page-paragraph">3</p>')
+    expect(wrapper.find('[data-testid="total-page-paragraph"]').html()).toMatch('<p class="title" data-testid="total-page-paragraph">3</p>')
   })
 
 })

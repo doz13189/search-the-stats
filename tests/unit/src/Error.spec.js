@@ -1,17 +1,17 @@
 import { shallowMount } from "@vue/test-utils";
 import flushPromises from 'flush-promises'
 
-import Error from "@/views/Error.vue";
+import NotFound from "@/views/NotFound.vue";
 
 
-describe("Error.vue", () => {
+describe("NotFound.vue", () => {
   beforeEach(() => {
   })
 
   it('Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)', async () => {
     // axios.get.mockResolvedValueOnce(firstResponse200)
 
-    // const wrapper = shallowMount(Error)
+    // const wrapper = shallowMount(NotFound)
     // const searchInput = wrapper.find('[data-testid="search-input"]')
     // expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toMatch('')
 
@@ -22,3 +22,4 @@ describe("Error.vue", () => {
     // expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
 
   })
+})
