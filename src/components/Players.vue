@@ -4,7 +4,7 @@
     <thead>
       <th></th>
       <th>name</th>
-      <th>position</th>
+      <!-- <th>position</th> -->
       <th>team</th>
     </thead>
 
@@ -18,9 +18,9 @@
         <td >
           {{ player.first_name }} {{ player.last_name }}
         </td>
-        <td >
+        <!-- <td >
           {{ player.position }}
-        </td>
+        </td> -->
         <td >
           {{ player.team.full_name }}
         </td>

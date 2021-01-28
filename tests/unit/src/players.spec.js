@@ -33,23 +33,6 @@ describe("Search.vue", () => {
   beforeEach(() => {
   })
 
-  it('Focus on <input> (User Interaction) - the title text changes to "Which player do you want to know about ?"', async () => {
-
-    const wrapper = shallowMount(Search)
-    const searchInput = wrapper.find('[data-testid="search-input"]')
-    console.log(searchInput.element)
-    console.log(document.activeElement)
-
-    expect(wrapper.find('[data-testid="search-text-paragraph"]').html()).toMatch('<p class="title is-5 has-text-black" data-testid="search-text-paragraph">Search the stats of NBA players</p>')
-
-    console.log(wrapper.find('[data-testid="search-text-paragraph"]').html())
-    // wrapper.vm.$nextTick()
-    // await flushPromises()
-
-    // expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
-
-  })
-
   it('Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)', async () => {
     // axios.get.mockResolvedValueOnce(firstResponse200)
 

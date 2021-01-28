@@ -345,7 +345,7 @@ export default defineComponent({
     }
 
     const multiply100 = (pct: number): string => {
-      return `${pct * 100}%`
+      return `${(pct * 100).toFixed(1)}%`
     }
 
     return {
