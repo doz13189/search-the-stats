@@ -21,14 +21,11 @@
 
   </NavigationLink>
 
-  <hr>
-
   <ScopeSlot>
-    <template v-slot:default="slotProps">
+    <template v-slot:default="{ slotProps }">
       <p>{{ slotProps.user.firstName }}</p>
     </template>
   </ScopeSlot>
-
 
   <!-- <BaseLayout>
 
