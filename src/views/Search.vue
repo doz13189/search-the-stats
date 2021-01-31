@@ -1,4 +1,9 @@
 <template>
+
+  <Tmp url="/profile">
+    Your Profile
+  </Tmp>
+
   <div class="block">
     <!-- <p :style="{ backgroundColor: false ? 'red' : 'blue' }"> -->
     <!-- <p :class="false ? 'has-text-primary' : 'has-text-link' "> -->
@@ -99,13 +104,15 @@ import { getAllPlayersParamType } from '@/types/api'
 import Players from "@/components/Players.vue";
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
+import Tmp from "@/components/Tmp.vue";
 
 
 export default defineComponent({
   components: {
     Players,
     ProgressBar,
-    Error
+    Error,
+    Tmp
   },
   setup() {
 

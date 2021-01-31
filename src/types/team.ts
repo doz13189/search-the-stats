@@ -38,7 +38,6 @@ export const team : TeamIF =  {
 // export type TeamType = keyof typeof team;
 // export type TeamType = typeof team[keyof typeof team];
 
-
 // export enum Team {
 //   "Atlanta Hawks" = 1,
 //   "Boston Celtics" = 2,
