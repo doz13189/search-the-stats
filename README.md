@@ -1,4 +1,4 @@
-:basketball: rui-vue3 :basketball:
+:basketball: Search the stats of NBA players :basketball:
 ====
 
 This project allows you to search for NBA player stats.  
