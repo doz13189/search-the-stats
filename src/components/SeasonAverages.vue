@@ -12,295 +12,396 @@
   <div class="container" v-if="thisSeasonAverages.result.value.data && lastSeasonAverages.result.value.data">
 
     <div class="columns m-1">
-      
-      <div class="column box m-1">
-        <p class="heading">Season</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ getSeason(thisSeasonAverages.result.value.data[0].season) }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ getSeason(lastSeasonAverages.result.value.data[0].season) }}</p>
-          </div>
-        </div>
-        <p class="heading"></p>
-      </div>
 
-      <div class="column box m-1">
-        <p class="heading">GP</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].games_played }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].games_played }}</p>
-          </div>
-        </div>
-        <p class="heading">Games Played</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          Season
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">Min</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].min }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].min }}</p>
-          </div>
-        </div>
-        <p class="heading">Minutes Per Game</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ getSeason(thisSeasonAverages.result.value.data[0].season) }}
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">pts</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].pts }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].pts }}</p>
-          </div>
-        </div>
-        <p class="heading">Points</p>
-      </div>
+        <template v-slot:lastSeason>
+          {{ getSeason(lastSeasonAverages.result.value.data[0].season) }}
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          GP
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].games_played }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].games_played }}
+        </template>
+
+        <template v-slot:subTitle>
+          Games Played
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          Min
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].min }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].min }}
+        </template>
+
+        <template v-slot:subTitle>
+          Minutes Per Game
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          pts
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].pts }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].pts }}
+        </template>
+
+        <template v-slot:subTitle>
+          Points
+        </template>
+      </statsCard>
 
     </div>
 
     <div class="columns m-1">
 
-      <div class="column box m-1">
-        <p class="heading">fgm</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fgm }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fgm }}</p>
-          </div>
-        </div>
-        <p class="heading">Field Goals Made</p>
-      </div>
-      
-      <div class="column box m-1">
-        <p class="heading">fga</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fga }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fga }}</p>
-          </div>
-        </div>
-        <p class="heading">Field Goals Attempted</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          fgm
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">fg%</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ multiply100(thisSeasonAverages.result.value.data[0].fg_pct) }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ multiply100(lastSeasonAverages.result.value.data[0].fg_pct) }}</p>
-          </div>
-        </div>
-        <p class="heading">Field Goals Percentage</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].fgm }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].fgm }}
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">fg3m</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg3m }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fg3m }}</p>
-          </div>
-        </div>
-        <p class="heading">Three-Point Field Foals Made</p>
-      </div>
+        <template v-slot:subTitle>
+          Field Goals Made
+        </template>
+      </statsCard>
 
-      <div class="column box m-1">
-        <p class="heading">fg3a</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fg3a }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fg3a }}</p>
-          </div>
-        </div>
-        <p class="heading">Three-Point Field Foals Attempted</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          fga
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">fg3%</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ multiply100(thisSeasonAverages.result.value.data[0].fg3_pct) }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ multiply100(lastSeasonAverages.result.value.data[0].fg3_pct) }}</p>
-          </div>
-        </div>
-        <p class="heading">Three-Point Field Goals Percentage</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].fga }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].fga }}
+        </template>
 
-    </div>
+        <template v-slot:subTitle>
+          Field Goals Attempted
+        </template>
+      </statsCard>
 
-    <div class="columns m-1"></div>
+      <statsCard>
+        <template v-slot:title>
+          fg%
+        </template>
 
-    <div class="columns m-1">
+        <template v-slot:thisSeason>
+          {{ multiply100(thisSeasonAverages.result.value.data[0].fg_pct) }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ multiply100(lastSeasonAverages.result.value.data[0].fg_pct) }}
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">ftm</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].ftm }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].ftm }}</p>
-          </div>
-        </div>
-        <p class="heading">Free Throws Made</p>
-      </div>
+        <template v-slot:subTitle>
+          Field Goals Percentage
+        </template>
+      </statsCard>
 
-      <div class="column box m-1">
-        <p class="heading">fta</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].fta }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].fta }}</p>
-          </div>
-        </div>
-        <p class="heading">Average Free Throws Attempted</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          fg3m
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">ft%</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ multiply100(thisSeasonAverages.result.value.data[0].ft_pct) }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ multiply100(lastSeasonAverages.result.value.data[0].ft_pct) }}</p>
-          </div>
-        </div>
-        <p class="heading">Free Throws Percentage</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].fg3m }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].fg3m }}
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">oreb</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].oreb }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].oreb }}</p>
-          </div>
-        </div>
-        <p class="heading">Offensive Rebounds</p>
-      </div>
+        <template v-slot:subTitle>
+          Three-Point Field Foals Made
+        </template>
+      </statsCard>
 
-      <div class="column box m-1">
-        <p class="heading">dreb</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].dreb }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].dreb }}</p>
-          </div>
-        </div>
-        <p class="heading">Defensive Rebounds</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          fg3a
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">reb</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].reb }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].reb }}</p>
-          </div>
-        </div>
-        <p class="heading">Rebounds</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].fg3a }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].fg3a }}
+        </template>
+
+        <template v-slot:subTitle>
+          Three-Point Field Foals Attempted
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          fg3%
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ multiply100(thisSeasonAverages.result.value.data[0].fg3_pct) }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ multiply100(lastSeasonAverages.result.value.data[0].fg3_pct) }}
+        </template>
+
+        <template v-slot:subTitle>
+          Three-Point Field Goals Percentage
+        </template>
+      </statsCard>
 
     </div>
 
     <div class="columns m-1"></div>
 
     <div class="columns m-1">
+
+      <statsCard>
+        <template v-slot:title>
+          ftm
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].ftm }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].ftm }}
+        </template>
+
+        <template v-slot:subTitle>
+          Free Throws Made
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          fta
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].fta }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].fta }}
+        </template>
+
+        <template v-slot:subTitle>
+          Average Free Throws Attempted
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          ft%
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ multiply100(thisSeasonAverages.result.value.data[0].ft_pct) }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ multiply100(lastSeasonAverages.result.value.data[0].ft_pct) }}
+        </template>
+
+        <template v-slot:subTitle>
+          Free Throws Percentage
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          oreb
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].oreb }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].oreb }}
+        </template>
+
+        <template v-slot:subTitle>
+          Offensive Rebounds
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          dreb
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].dreb }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].dreb }}
+        </template>
+
+        <template v-slot:subTitle>
+          Defensive Rebounds
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          reb
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].reb }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].reb }}
+        </template>
+
+        <template v-slot:subTitle>
+          Rebounds
+        </template>
+      </statsCard>
+
+    </div>
+
+    <div class="columns m-1"></div>
+
+    <div class="columns m-1">
       
-      <div class="column box m-1">
-        <p class="heading">ast</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].ast }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].ast }}</p>
-          </div>
-        </div>
-        <p class="heading">Assists</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          ast
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">blk</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].blk }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].blk }}</p>
-          </div>
-        </div>
-        <p class="heading">Blocks</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].ast }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].ast }}
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">stl</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].stl }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].stl }}</p>
-          </div>
-        </div>
-        <p class="heading">Steals</p>
-      </div>
+        <template v-slot:subTitle>
+          Assists
+        </template>
+      </statsCard>
 
-      <div class="column box m-1">
-        <p class="heading">pf</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].pf }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].pf }}</p>
-          </div>
-        </div>
-        <p class="heading">Personal Fouls</p>
-      </div>
+      <statsCard>
+        <template v-slot:title>
+          blk
+        </template>
 
-      <div class="column box m-1">
-        <p class="heading">to</p>
-        <div class="columns is-mobile">
-          <div class="column">
-            <p class="title is-5 has-text-danger">{{ thisSeasonAverages.result.value.data[0].turnover }}</p>
-          </div>
-          <div class="column">
-            <p class="title is-5 has-text-info">{{ lastSeasonAverages.result.value.data[0].turnover }}</p>
-          </div>
-        </div>
-        <p class="heading">Turnover</p>
-      </div>
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].blk }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].blk }}
+        </template>
+
+        <template v-slot:subTitle>
+          Blocks
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          stl
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].stl }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].stl }}
+        </template>
+
+        <template v-slot:subTitle>
+          Steals
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          pf
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].pf }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].pf }}
+        </template>
+
+        <template v-slot:subTitle>
+          Personal Fouls
+        </template>
+      </statsCard>
+
+      <statsCard>
+        <template v-slot:title>
+          to
+        </template>
+
+        <template v-slot:thisSeason>
+          {{ thisSeasonAverages.result.value.data[0].turnover }}
+        </template>
+        
+        <template v-slot:lastSeason>
+          {{ lastSeasonAverages.result.value.data[0].turnover }}
+        </template>
+
+        <template v-slot:subTitle>
+          Turnover
+        </template>
+      </statsCard>
 
     </div>
 
@@ -316,11 +417,13 @@ import { getSeasonAveragesParamType } from '@/types/api'
 
 import ProgressBar from "@/components/ProgressBar.vue";
 import Error from "@/components/Error.vue";
+import statsCard from "@/parts/statsCard.vue";
 
 export default defineComponent({
   components: {
     ProgressBar,
-    Error
+    Error,
+    statsCard
   },
   props: {
     playerId: String,

@@ -22,7 +22,7 @@ various basic syntax are used.
 The origin of the project name is Rui Hachimura. Rui Hachimura is NBA Player in Washington Wizards.
 
 ## URL
-https://rui-vue3.web.app/
+https://search-the-stats.web.app/
 
 ## Constitution
 
