@@ -15,14 +15,18 @@
           class="input is-rounded"
           type="text"
           v-model="searchText"
-          v-on:focus="focus"
-          v-on:blur="blur"
+          @focus="focus"
+          @blur="blur"
+          @keyup.enter="search"
           data-testid="search-input"
           >
       </div>
       <div class="control">
-        <button class="button is-rounded is-primary" @click="search()" :disabled="!searchText" data-testid="search-button">
-          Search
+        <button class="button is-rounded is-primary"
+          @click="search"
+          :disabled="!searchText"
+          data-testid="search-button">
+          SEARCH
         </button>
       </div>
     </div>
