@@ -19,6 +19,13 @@
         <tr>
           <th>name</th>
           <td>{{ specificPlayer.result.value.first_name }} {{ specificPlayer.result.value.last_name }}</td>
+          <!-- <td>
+            <noData>
+              <template v-slot:infomation>
+                {{ specificPlayer.result.value.first_name }} {{ specificPlayer.result.value.last_name }}
+              </template>
+            </noData>
+          </td> -->
         </tr>
         <tr>
           <th>position</th>
