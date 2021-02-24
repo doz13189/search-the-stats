@@ -1,5 +1,7 @@
 <template>
 
+  <p class="subtitle has-text-black">BASIC INFORMATION</p>
+
   <div class="block">
     <!-- <p>loading : {{ players.loading.value }}</p> -->
     <!-- <p>error : {{ players.error.value }}</p> -->
@@ -42,19 +44,7 @@
     </table>
   </div>
 
-  <!-- <table class="table is-bordered" align="center">
-    <thead>
-      <th></th>
-    </thead>
-
-    <tbody>
-      <tr v-for="player in Object.entries(specificPlayer.result.value)" :key="player">
-          <td>{{ player[0] }}</td>
-          <td>{{ player[1] }}</td>
-      </tr>
-    </tbody>
-  </table> -->
-  
+  <div class="block"></div>
 
 </template>
 

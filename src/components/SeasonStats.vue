@@ -1,6 +1,7 @@
 <template>
-  <div class="block">
-  </div>
+  <div class="block"></div>
+
+  <p class="subtitle has-text-black">RECENT GAMES</p>
 
   <div class="block">
     <!-- <p>loading : {{ stats.loading.value }}</p> -->

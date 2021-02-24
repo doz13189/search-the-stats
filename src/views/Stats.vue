@@ -5,7 +5,7 @@
   <div class="block"></div>
 
   <PlayerDetails :playerId="playerId"/>
-  <SeasonAverages :playerId="playerId" :season="thisSeason"/>
+  <SeasonAveragesV2 :playerId="playerId" :season="thisSeason"/>
   <!-- <SeasonAverages :playerId="playerId" :season="lastSeason"/> -->
   <SeasonStats :playerId="playerId" :season="thisSeason"/>
 
@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-import SeasonAverages from '@/components/SeasonAverages.vue';
+import SeasonAveragesV2 from '@/components/SeasonAveragesV2.vue';
 import SeasonStats from '@/components/SeasonStats.vue';
 import PlayerDetails from '@/components/PlayerDetails.vue';
 
@@ -23,7 +23,7 @@ export default defineComponent({
     playerId: String
   },
   components: {
-    SeasonAverages,
+    SeasonAveragesV2,
     SeasonStats,
     PlayerDetails
   },
