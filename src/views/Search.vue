@@ -60,7 +60,7 @@
 
       <div class="columns is-gapless">
         <div class="column"></div>
-        <div class="column">
+        <div class="column m-1">
           <button
             class="button is-rounded"
             @click="page--"
@@ -69,7 +69,7 @@
             previous
           </button>
         </div>
-        <div class="column">
+        <div class="column m-1">
           <button
             class="button is-rounded"
             @click="page++"
