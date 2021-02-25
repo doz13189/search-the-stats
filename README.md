@@ -1,6 +1,10 @@
 :basketball: Search the stats of NBA players :basketball:
 ====
 
+one
+two
+three
+
 This project allows you to search for NBA player stats.  
 but there is other purpose.  
 This project will be a template for projects created with Vue3 and Typescript.
