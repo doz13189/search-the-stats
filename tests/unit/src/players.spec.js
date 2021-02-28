@@ -42,9 +42,16 @@ describe("Search.vue", () => {
 
     searchInput.setValue('test')
     // wrapper.vm.$nextTick()
-    await flushPromises()
+    // await flushPromises()
 
+
+    await setTimeout(() => 0, 0)
     expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
+
+    Promise.resolve().then(() => {
+      expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
+    })
+
 
   })
 
