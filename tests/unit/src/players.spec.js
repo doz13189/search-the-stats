@@ -41,7 +41,7 @@ describe("Search.vue", () => {
     expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toMatch('')
 
     searchInput.setValue('test')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
 
     expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
@@ -55,11 +55,11 @@ describe("Search.vue", () => {
     const searchInput = wrapper.find('[data-testid="search-input"]')
 
     searchInput.setValue('test')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
     
     wrapper.find('[data-testid="search-button"]').trigger('click')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
 
     // console.log(wrapper.find('[data-testid="current-page-paragraph"]').html())
@@ -73,11 +73,11 @@ describe("Search.vue", () => {
     const searchInput = wrapper.find('[data-testid="search-input"]')
   
     searchInput.setValue('test')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
     
     wrapper.find('[data-testid="search-button"]').trigger('click')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
   
     // console.log(wrapper.find('[data-testid="total-page-paragraph"]').html())
@@ -93,12 +93,12 @@ describe("Search.vue", () => {
     const wrapper = shallowMount(Search)
     const searchInput = wrapper.find('[data-testid="search-input"]')  
     searchInput.setValue('test')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
   
     // Execute the search logic at first time
     wrapper.find('[data-testid="search-button"]').trigger('click')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
 
     // the previous button is avalable after returning secondResponse200. so disable attribute is undefined.
@@ -106,7 +106,7 @@ describe("Search.vue", () => {
 
     // Execute the search logic at second time
     wrapper.find('[data-testid="previous-button"]').trigger('click')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
 
     // the previous button is not avalable after returning thirdResponse200. so disable attribute match with ''.
@@ -126,12 +126,12 @@ describe("Search.vue", () => {
     const wrapper = shallowMount(Search)
     const searchInput = wrapper.find('[data-testid="search-input"]')  
     searchInput.setValue('test')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
   
     // Execute the search logic at first time
     wrapper.find('[data-testid="search-button"]').trigger('click')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
 
     // the next button is avalable after returning secondResponse200. so disable attribute is undefined.
@@ -139,7 +139,7 @@ describe("Search.vue", () => {
 
     // Execute the search logic at second time
     wrapper.find('[data-testid="next-button"]').trigger('click')
-    wrapper.vm.$nextTick()
+    // wrapper.vm.$nextTick()
     await flushPromises()
 
     // the next button is not avalable after returning thirdResponse200. so disable attribute match with ''.
