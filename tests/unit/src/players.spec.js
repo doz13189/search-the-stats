@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { shallowMount } from "@vue/test-utils";
-import flushPromises from 'flush-promises'
+import { shallowMount, flushPromises } from "@vue/test-utils";
+// import flushPromises from 'flush-promises'
 
 import Search from "@/views/Search.vue";
 import {
