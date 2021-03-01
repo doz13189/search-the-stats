@@ -35,23 +35,37 @@ describe("Search.vue", () => {
 
   it('Enter characters in the <input> (User Interaction) - enable <input> (What is rendered to the DOM)', async () => {
     // axios.get.mockResolvedValueOnce(firstResponse200)
+    // axios.get.mockResolvedValueOnce(firstResponse200)
 
     const wrapper = shallowMount(Search)
     const searchInput = wrapper.find('[data-testid="search-input"]')
-    expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toMatch('')
 
     searchInput.setValue('test')
     // wrapper.vm.$nextTick()
+    await flushPromises()
+
+    // setTimeout(() => searchInput.setValue('test'), 0)
+    
+    // wrapper.find('[data-testid="search-button"]').trigger('click')
+    // await Promise.resolve().then()
     // await flushPromises()
+    // await new Promise(resolve => {
+    //   // resolve()
+    //   setTimeout(resolve, 0)
+    // })
+    // expect(wrapper.find('[data-testid="previous-button"]').attributes().disabled).toEqual('')
+    
+    // await Promise.resolve().then()
+    // await new Promise(resolve => {
+    //   // resolve()
+    //   setTimeout(resolve, 0)
+    // })
 
-
-    await setTimeout(() => 0, 0)
-    expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
+    // expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
 
     Promise.resolve().then(() => {
       expect(wrapper.find('[data-testid="search-button"]').attributes().disabled).toBeUndefined()
     })
-
 
   })
 
