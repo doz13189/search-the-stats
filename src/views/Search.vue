@@ -17,14 +17,15 @@
           v-model="searchText"
           @focus="focus"
           @blur="blur"
-          @keyup.enter="search"
+          @keyup.enter="search()"
           data-testid="search-input"
           >
       </div>
       <div class="control">
+        
+        <!-- :disabled="!searchText" -->
         <button class="button is-rounded is-primary"
-          @click="search"
-          :disabled="!searchText"
+          @click="search()"
           data-testid="search-button">
           SEARCH
         </button>
@@ -120,6 +121,10 @@ export default defineComponent({
     const players = new UseRequest(getAllPlayers)
 
     const search: (page?: number) => void = (page = 1): void => {
+      console.log(page)
+
+      if (!searchText.value.length) return
+
       players.createRequest<getAllPlayersParamType>({
         search: searchText.value,
         page: page
