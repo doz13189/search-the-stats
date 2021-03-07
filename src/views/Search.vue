@@ -121,7 +121,6 @@ export default defineComponent({
     const players = new UseRequest(getAllPlayers)
 
     const search: (page?: number) => void = (page = 1): void => {
-      console.log(page)
 
       if (!searchText.value.length) return
 
