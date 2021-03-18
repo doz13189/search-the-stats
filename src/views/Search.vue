@@ -97,7 +97,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, getCurrentInstance, ref, watch } from 'vue';
 import { UseRequest } from '@/utils/useRequest'
 import { getAllPlayers } from '@/api/api'
 import { getAllPlayersParamType } from '@/types/api'
@@ -113,7 +113,10 @@ export default defineComponent({
     ProgressBar,
     Error
   },
-  setup() {
+  setup(prop, context) {
+    const internalInstance: any = getCurrentInstance()
+    console.log(internalInstance.appContext.config.globalProperties.foo)
+    console.log(internalInstance.appContext.config.globalProperties.$translate())
 
     const searchText = ref<string>('')
     const previousSearchText = ref<string>('')

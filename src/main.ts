@@ -16,5 +16,18 @@ import router from './router/index'
 // }
 // firebase.initializeApp(firebaseConfig)
 
+import error from './plugins/error'
+const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+const i18nStrings = {
+  greetings: {
+    hi: 'Hallo!'
+  }
+}
+
+app.config.globalProperties.foo = 'bar'
+
+app.use(error, i18nStrings)
+app.use(router)
+
+app.mount('#app')
