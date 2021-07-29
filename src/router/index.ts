@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from 'vue-router';
 
-import Search from '@/views/Search.vue';
-import Stats from '@/views/Stats.vue';
+import Search from '@/views/pages/Search.vue';
+import Stats from '@/views/pages/Stats.vue';
 import Sandbox from '@/views/Sandbox.vue';
 // import NotFound from '@/views/NotFound.vue';
 
