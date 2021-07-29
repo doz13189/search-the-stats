@@ -22,11 +22,6 @@ const routes = [
     component: Sandbox,
     name: 'Sandbox'
   },
-  // {
-  //   path: '/:catchAll(.*)',
-  //   name: 'NotFound',
-  //   component: NotFound,
-  // },
 ];
 
 const router = createRouter({

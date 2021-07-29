@@ -1,8 +1,6 @@
 <template>
 
   <div class="block">
-    <!-- <p :style="{ backgroundColor: false ? 'red' : 'blue' }"> -->
-    <!-- <p :class="false ? 'has-text-primary' : 'has-text-link' "> -->
     <p class="title is-5 has-text-black" data-testid="search-text-paragraph">
       {{ searchTextParagraph }}
     </p>
